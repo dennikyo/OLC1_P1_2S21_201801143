@@ -1,9 +1,8 @@
 /*--------------- 1ra Area: Codigo de Usuario -----------------------*/
 //-------> importaciones, paquetes
-package Analizadores;
+package analizadores;
 import java_cup.runtime.Symbol;
-import olc1.clase2.Evaluar;
-import java.util.LinkedList;
+
 
 //------> Codigo para el parser,variables, metodos
 parser code{:

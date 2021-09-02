@@ -5,6 +5,12 @@
  */
 package ventana_compi;
 
+import Analizadores.Analizador_lexico;
+import java.io.BufferedReader;
+import java.io.StringReader;
+import java.util.logging.Level;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 50235
@@ -172,6 +178,24 @@ public class interfaz extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        /*try {
+            Sintactico sintactico = new Sintactico(new Analizador_lexico(new BufferedReader( new StringReader(jTextArea1.getText()))));
+            sintactico.parse();
+            lista_evaluar = sintactico.lista_evaluar;
+            
+            for(Evaluar ev : lista_evaluar){
+                System.out.println("El valor de la expresión es: "+ ev.getValor());
+            }
+            System.out.println("Todo Correcto ");
+            
+           
+            
+        }catch (Exception ex){
+            Logger.getLogger(interfaz.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+        JOptionPane.showMessageDialog(null, "Analizado con exito", "Informacion", JOptionPane.INFORMATION_MESSAGE); */ 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

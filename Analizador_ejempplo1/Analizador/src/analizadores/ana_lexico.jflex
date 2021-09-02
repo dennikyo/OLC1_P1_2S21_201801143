@@ -3,7 +3,7 @@
  ---------------------------------------------------*/
 
 //------> Paquetes,importaciones
-package Analizadores;
+package analizadores;
 import java_cup.runtime.*;
 import javax.swing.JOptionPane;
 
@@ -29,7 +29,7 @@ import javax.swing.JOptionPane;
 
 //------> Expresiones Regulares
 digito              = [0-9]+
-cadena              = ["][^"\n]+["]
+cadena              = [\"][^\"\n]+[\"]
 
 //------> Estados
 
