@@ -33,7 +33,7 @@ action code
 
 //------> declaracion de terminales 
 
-terminal String mas, por, div, menos, pyc, cora, corc, para, parc, eval, digito, igual, llavea, llavec, glob,esta,graf,tit,ejex,val,titx,tity, pie, arch, dosp, cadena;
+terminal String mas, dou,coma, por,id, div, str, menos, pyc,cora, corc, para, parc, eval, digito, igual, llavea, llavec, glob,esta,graf,tit,ejex,val,titx,tity, pie, arch, dosp, cadena;
  
 
 //------> declaracion de no terminales
@@ -48,6 +48,7 @@ non terminal TITULOX;
 non terminal TITULOY;
 non terminal GRAFICAPIE;
 non terminal ARCHIVO;
+non terminal DECLARACION, DECLARACIONES;
 
 //------> precedencia
 precedence left mas, menos;
@@ -65,18 +66,35 @@ INICIO::= INSTRUCCIONES:a    {::}
 INSTRUCCIONES::= INSTRUCCIONES:a INSTRUCCION:b    {::}
        | INSTRUCCION:a                            {::}
        ;
-INSTRUCCION::= glob llavea llavec {::}
-            | esta llavea llavec {::}
-            | graf llavea llavec {::}
-            | tit llavea llavec {::}
-            | ejex llavea llavec {::}
-            | val llavea llavec {::}
-            | titx llavea llavec {::}
-            | tity llavea llavec {::}
-            | pie llavea llavec {::}
-            | arch llavea llavec {::};
+INSTRUCCION::= glob llavea DECLARACIONES llavec {::}
+            | esta llavea DECLARACIONES llavec {::}
+            | graf llavea DECLARACIONES llavec {::}
+            | tit llavea DECLARACIONES llavec {::}
+            | ejex llavea DECLARACIONES llavec {::}
+            | val llavea DECLARACIONES llavec {::}
+            | titx llavea DECLARACIONES llavec {::}
+            | tity llavea DECLARACIONES llavec {::}
+            | pie llavea DECLARACIONES llavec {::}
+            | arch llavea DECLARACIONES llavec {::};
 
+DECLARACIONES::= DECLARACIONES DECLARACION
+                |DECLARACION;
 
+DECLARACION::= str id igual cadena pyc {::}
+            |str id igual id pyc {::}
+            |dou id igual digito pyc {::}
+            |dou id igual id pyc {::}
+            |tit dosp cadena pyc {::}
+            |tit dosp id pyc {::}
+            |arch dosp cadena pyc {::}
+            |arch dosp id pyc {::}
+            |titx dosp cadena pyc {::}
+            |titx dosp id pyc {::}
+            |tity dosp cadena pyc {::}
+            |tity dosp id pyc {::}
+            |ejex dosp cora cadena coma cadena coma cadena corc dosp {::};
+            
+            
 
 
 

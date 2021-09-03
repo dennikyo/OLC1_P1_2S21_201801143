@@ -30,6 +30,7 @@ import javax.swing.JOptionPane;
 //------> Expresiones Regulares
 digito              = [0-9]+
 cadena              = [\"][^\"\n]+[\"]
+id                  = [a-z0-9]+("_"|[a-z0-9]+)*
 
 //------> Estados
 
@@ -55,6 +56,7 @@ cadena              = [\"][^\"\n]+[\"]
 "{"         { System.out.println("Reconocio "+yytext()+" llavea"); return new Symbol(Simbolos.llavea, yycolumn, yyline,yytext());}
 "}"         { System.out.println("Reconocio "+yytext()+" llavec"); return new Symbol(Simbolos.llavec, yycolumn, yyline,yytext());}
 ":"         { System.out.println("Reconocio "+yytext()+" dosp"); return new Symbol(Simbolos.dosp, yycolumn, yyline, yytext()); }
+","         { System.out.println("Reconocio "+yytext()+" coma"); return new Symbol(Simbolos.coma, yycolumn, yyline, yytext()); }
 
 
 
@@ -84,9 +86,14 @@ cadena              = [\"][^\"\n]+[\"]
 
 "evaluar"         { System.out.println("Reconocio "+yytext()+" eval"); return new Symbol(Simbolos.eval, yycolumn, yyline, yytext()); }
 
+"string"         { System.out.println("Reconocio "+yytext()+" str"); return new Symbol(Simbolos.str, yycolumn, yyline, yytext()); }
+
+"double"         { System.out.println("Reconocio "+yytext()+" dou"); return new Symbol(Simbolos.dou, yycolumn, yyline, yytext()); }
+
 //-------> Simbolos ER
 {digito}    { System.out.println("Reconocio "+yytext()+" digito"); return new Symbol(Simbolos.digito, yycolumn, yyline, yytext()); }
 {cadena}    { System.out.println("Reconocio "+yytext()+" cadena"); return new Symbol(Simbolos.cadena, yycolumn, yyline, yytext()); }
+{id}    { System.out.println("Reconocio "+yytext()+" id"); return new Symbol(Simbolos.id, yycolumn, yyline, yytext()); }
 
 //------> Espacios
 [ \t\r\n\f]             {/* Espacios en blanco, se ignoran */}
