@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/generadores/GLexico.java</file>
-            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/analizadores/Analizador_sintactico.cup</file>
             <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/generadores/sope.java</file>
-            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/analizadores/ana_lexico.jflex</file>
+            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/analizadores/Analizador_sintactico.cup</file>
             <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/ventana_compi/interfaz.java</file>
+            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/analizadores/ana_lexico.jflex</file>
         </group>
     </open-files>
 </project-private>

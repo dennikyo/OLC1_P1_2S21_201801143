@@ -33,7 +33,7 @@ action code
 
 //------> declaracion de terminales 
 
-terminal String mas, dou,coma, por,id, div, str, menos, pyc,cora, corc, para, parc, eval, digito, igual, llavea, llavec, glob,esta,graf,tit,ejex,val,titx,tity, pie, arch, dosp, cadena;
+terminal String mas, dou,coma, por,id, div, str, menos, pyc,cora, deci, corc, para, parc, igual, llavea, llavec, glob,esta,graf,tit,ejex,val,titx,tity, pie, arch, dosp, cadena;
  
 
 //------> declaracion de no terminales
@@ -82,7 +82,7 @@ DECLARACIONES::= DECLARACIONES DECLARACION
 
 DECLARACION::= str id igual cadena pyc {::}
             |str id igual id pyc {::}
-            |dou id igual digito pyc {::}
+            |dou id igual deci pyc {::}
             |dou id igual id pyc {::}
             |tit dosp cadena pyc {::}
             |tit dosp id pyc {::}

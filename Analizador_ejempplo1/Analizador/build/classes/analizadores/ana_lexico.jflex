@@ -30,7 +30,8 @@ import javax.swing.JOptionPane;
 //------> Expresiones Regulares
 digito              = [0-9]+
 cadena              = [\"][^\"\n]+[\"]
-id                  = [a-z0-9]+("_"|[a-z0-9]+)*
+id                  = [A-z0-9]+("_"|[A-z0-9]+)*
+decimal             = [0-9]+("."[0-9]*)
 
 //------> Estados
 
@@ -94,6 +95,7 @@ id                  = [a-z0-9]+("_"|[a-z0-9]+)*
 {digito}    { System.out.println("Reconocio "+yytext()+" digito"); return new Symbol(Simbolos.digito, yycolumn, yyline, yytext()); }
 {cadena}    { System.out.println("Reconocio "+yytext()+" cadena"); return new Symbol(Simbolos.cadena, yycolumn, yyline, yytext()); }
 {id}    { System.out.println("Reconocio "+yytext()+" id"); return new Symbol(Simbolos.id, yycolumn, yyline, yytext()); }
+{decimal}    { System.out.println("Reconocio "+yytext()+" deci"); return new Symbol(Simbolos.deci, yycolumn, yyline, yytext()); }
 
 //------> Espacios
 [ \t\r\n\f]             {/* Espacios en blanco, se ignoran */}
