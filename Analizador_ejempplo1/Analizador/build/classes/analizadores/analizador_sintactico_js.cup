@@ -1,0 +1,135 @@
+/*--------------- 1ra Area: Codigo de Usuario -----------------------*/
+//-------> importaciones, paquetes
+package analizadores;
+import java_cup.runtime.Symbol;
+
+
+//------> Codigo para el parser,variables, metodos
+parser code{:
+
+        //Podemos crear variables, listas, etc;
+        // deben de ser staticas si se quieren usar fuera
+        
+        
+        
+
+        public void syntax_error(Symbol s)
+        {
+            System.err.println("Error en la Linea " + (s.right+1) +" Columna "+(s.left+1)+ ". Identificador "+s.value + " no reconocido. Se ha recuperado del error." );
+        }
+
+        public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception
+        {
+            System.err.println("Error en la Linea " + (s.right+1)+ " Columna "+(s.left+1)+". Identificador " +s.value + " no reconocido.");
+        }
+        
+:}
+
+//------> Codigo para las acciones gramaticales
+action code
+{:  :}
+
+/*--------------- 2da Area: Declaraciones -----------------------*/
+
+//------> declaracion de terminales 
+
+terminal String mas, dou,coma, por,id, div, str, menos, pyc, deci, cora, corc, digito, cadena,  para, parc, igual, llavea, llavec, dosp,clase,vare,lete,conste,ife,elsi,fory,whi,du,swi,consi,bre,req,iguall,dif,menor,menig,mayor,mayig,and,or,not, pote,modu;
+ 
+
+//------> declaracion de no terminales
+non terminal INICIO,  INSTRUCCIONES, INSTRUCCION;
+non terminal CLASS;
+non terminal VAR;
+non terminal LET;
+non terminal CONST;
+non terminal IF;
+non terminal ELSE;
+non terminal FOR;
+non terminal WHILE;
+non terminal DO;
+non terminal SWITCH;
+non terminal BREAK;
+non terminal REQUIRE;
+non terminal DECLARACION, DECLARACIONES;
+non terminal METODOS;
+non terminal OPERACIONES;
+non terminal IFNIERNO;
+
+
+
+
+
+
+//------> precedencia
+precedence left mas, menos;
+precedence left por, div;
+
+
+
+start with INICIO;
+
+/*--------------- 3ra Area: Reglas Semanticas -----------------------*/
+
+INICIO::= INSTRUCCIONES:a    {::} 
+       ;
+
+INSTRUCCIONES::= INSTRUCCIONES:a INSTRUCCION:b    {::}
+       | INSTRUCCION:a                            {::}
+       ;
+INSTRUCCION::= clase id llavea DECLARACIONES llavec {::}
+            | vare id igual cadena pyc {::}
+            | vare id igual cadena {::}
+            | lete id igual cadena pyc {::}
+            | lete id igual cadena {::}
+            | conste id igual dou pyc {::}
+            | conste id igual cadena pyc {::};
+
+
+DECLARACIONES::= DECLARACIONES DECLARACION
+                |DECLARACION;
+
+DECLARACION::= vare id igual cadena pyc {::}
+            | vare id igual cadena {::}
+            | vare id igual id mas id {::}
+            | lete id igual cadena pyc {::}
+            | lete id igual cadena {::}
+            | lete id igual id mas id {::}
+            | conste id igual dou pyc {::}
+            | conste id igual cadena pyc {::}
+            | conste id igual id mas id {::};
+            
+            
+METODOS::= id para id parc cora INSTRUCCIONES corc {::}
+        | id para parc cora INSTRUCCIONES corc {::}
+        | consi para id parc pyc {::}
+        | id para id parc pyc {::}
+        | id para id menos digito coma id coma id coma id parc pyc {::};
+        
+OPERACIONES::= id menos menos {::}
+            | id mas mas {::}
+            | id id {::}
+            | id menig digito pyc {::}
+            | id menor id pyc {::}
+            | id mayig id pyc {::}
+            | id mayor id pyc {::}
+            | id igual id mas por {::}
+            | id igual id mas cadena {::}
+            | id igual id mas cadena pyc {::}
+            | id igual id mas digito {::}
+            | id igual id mas digito pyc {::}
+            | id mas cadena {::}
+            | id igual id por id pyc {::}
+            | id mayig digito and id menig digito {::};
+
+IFNIERNO::= 
+        
+      
+            
+
+
+            
+            
+
+
+
+

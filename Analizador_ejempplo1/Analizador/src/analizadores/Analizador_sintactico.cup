@@ -33,7 +33,7 @@ action code
 
 //------> declaracion de terminales 
 
-terminal String mas, dou,coma, por,id, div, str, menos, pyc,cora, deci, corc, para, parc, igual, llavea, llavec, glob,esta,graf,tit,ejex,val,titx,tity, pie, arch, dosp, cadena;
+terminal String mas, dou,coma, por,id, div, str, menos, pyc,cora, deci, corc, para, parc, igual, llavea, llavec, glob,esta,graf,tit,ejex,val,titx,tity, pie, arch, dosp, cadena,clase,vare,lete,const,ife,elsi,fory,whi,du,swi,consi,bre,req,iguall,dif,menor,menig,mayor,mayig,and,or,not, pote,modu;
  
 
 //------> declaracion de no terminales
@@ -49,6 +49,11 @@ non terminal TITULOY;
 non terminal GRAFICAPIE;
 non terminal ARCHIVO;
 non terminal DECLARACION, DECLARACIONES;
+
+
+
+
+
 
 //------> precedencia
 precedence left mas, menos;
@@ -93,6 +98,8 @@ DECLARACION::= str id igual cadena pyc {::}
             |tity dosp cadena pyc {::}
             |tity dosp id pyc {::}
             |ejex dosp cora cadena coma cadena coma cadena corc dosp {::};
+
+
             
             
 

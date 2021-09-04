@@ -28,9 +28,8 @@ import javax.swing.JOptionPane;
 %unicode
 
 //------> Expresiones Regulares
-digito              = [0-9]+
 cadena              = [\"][^\"\n]+[\"]
-id                  = [A-z0-9]+("_"|[A-z0-9]+)*
+id                  = [A-z0-9]+("_"|[A-z]|[0-9])*
 decimal             = [0-9]+("."[0-9]*)
 
 //------> Estados
@@ -85,14 +84,11 @@ decimal             = [0-9]+("."[0-9]*)
 
 "Archivo" { System.out.println("Reconocio "+yytext()+" arch"); return new Symbol(Simbolos.arch, yycolumn, yyline, yytext()); }
 
-"evaluar"         { System.out.println("Reconocio "+yytext()+" eval"); return new Symbol(Simbolos.eval, yycolumn, yyline, yytext()); }
-
 "string"         { System.out.println("Reconocio "+yytext()+" str"); return new Symbol(Simbolos.str, yycolumn, yyline, yytext()); }
 
 "double"         { System.out.println("Reconocio "+yytext()+" dou"); return new Symbol(Simbolos.dou, yycolumn, yyline, yytext()); }
 
 //-------> Simbolos ER
-{digito}    { System.out.println("Reconocio "+yytext()+" digito"); return new Symbol(Simbolos.digito, yycolumn, yyline, yytext()); }
 {cadena}    { System.out.println("Reconocio "+yytext()+" cadena"); return new Symbol(Simbolos.cadena, yycolumn, yyline, yytext()); }
 {id}    { System.out.println("Reconocio "+yytext()+" id"); return new Symbol(Simbolos.id, yycolumn, yyline, yytext()); }
 {decimal}    { System.out.println("Reconocio "+yytext()+" deci"); return new Symbol(Simbolos.deci, yycolumn, yyline, yytext()); }
