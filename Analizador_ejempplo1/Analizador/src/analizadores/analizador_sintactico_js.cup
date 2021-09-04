@@ -53,7 +53,8 @@ non terminal REQUIRE;
 non terminal DECLARACION, DECLARACIONES;
 non terminal METODOS;
 non terminal OPERACIONES;
-non terminal IFNIERNO;
+non terminal INSTRUCCIONESIF;
+non terminal COMPARACIONES;
 
 
 
@@ -103,6 +104,7 @@ METODOS::= id para id parc cora INSTRUCCIONES corc {::}
         | id para parc cora INSTRUCCIONES corc {::}
         | consi para id parc pyc {::}
         | id para id parc pyc {::}
+        | ife para INSTRUCCIONESIF COMPARACIONES parc cora INSTRUCCIONES corc {::}
         | id para id menos digito coma id coma id coma id parc pyc {::};
         
 OPERACIONES::= id menos menos {::}
@@ -121,8 +123,9 @@ OPERACIONES::= id menos menos {::}
             | id igual id por id pyc {::}
             | id mayig digito and id menig digito {::};
 
-IFNIERNO::= 
-        
+INSTRUCCIONESIF::= id iguall digito {::}
+                | id iguall {::};
+            
       
             
 

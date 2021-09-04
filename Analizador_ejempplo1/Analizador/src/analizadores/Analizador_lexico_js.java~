@@ -807,7 +807,7 @@ public class Analizador_lexico_js implements java_cup.runtime.Scanner {
             }
           case 74: break;
           case 35: 
-            { System.out.println("Reconocio "+yytext()+" const"); return new Symbol(Simbolosjs.const, yycolumn, yyline, yytext());
+            { System.out.println("Reconocio "+yytext()+" conste"); return new Symbol(Simbolosjs.conste, yycolumn, yyline, yytext());
             }
           case 75: break;
           case 36: 

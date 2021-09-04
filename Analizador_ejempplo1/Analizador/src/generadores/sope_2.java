@@ -30,7 +30,7 @@ public class sope_2 {
         opciones[4] = "-parser";         
         
         //Le damos nombre a esa clase del paso anterior
-        opciones[5] = "Sintactico"; 
+        opciones[5] = "Sintacticojs"; 
         
         //Le decimos donde se encuentra el archivo .cup 
         opciones[6] = "src/analizadores/Analizador_sintactico_js.cup"; 

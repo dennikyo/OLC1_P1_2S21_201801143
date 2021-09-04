@@ -33,7 +33,7 @@ action code
 
 //------> declaracion de terminales 
 
-terminal String mas, dou,coma, por,id, div, str, menos, pyc,cora, deci, corc, para, parc, igual, llavea, llavec, glob,esta,graf,tit,ejex,val,titx,tity, pie, arch, dosp, cadena,clase,vare,lete,const,ife,elsi,fory,whi,du,swi,consi,bre,req,iguall,dif,menor,menig,mayor,mayig,and,or,not, pote,modu;
+terminal String mas, dou,coma, por,id, div, str, menos, pyc,cora, deci, corc, para, parc, igual, llavea, llavec, glob,esta,graf,tit,ejex,val,titx,tity, pie, arch, dosp, cadena;
  
 
 //------> declaracion de no terminales
