@@ -31,21 +31,25 @@ public class Sintacticojs extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\055\000\002\002\004\000\002\002\003\000\002\003" +
+    "\000\074\000\002\002\004\000\002\002\003\000\002\003" +
     "\004\000\002\003\003\000\002\004\007\000\002\004\007" +
     "\000\002\004\006\000\002\004\007\000\002\004\006\000" +
     "\002\004\007\000\002\004\007\000\002\022\004\000\002" +
     "\022\003\000\002\021\007\000\002\021\006\000\002\021" +
     "\010\000\002\021\007\000\002\021\006\000\002\021\010" +
     "\000\002\021\007\000\002\021\007\000\002\021\010\000" +
-    "\002\023\011\000\002\023\010\000\002\023\007\000\002" +
-    "\023\007\000\002\023\012\000\002\023\017\000\002\024" +
-    "\005\000\002\024\005\000\002\024\004\000\002\024\006" +
-    "\000\002\024\006\000\002\024\006\000\002\024\006\000" +
-    "\002\024\007\000\002\024\007\000\002\024\010\000\002" +
-    "\024\007\000\002\024\010\000\002\024\005\000\002\024" +
-    "\010\000\002\024\011\000\002\025\005\000\002\025\004" +
-    "" });
+    "\002\023\011\000\002\023\010\000\002\023\005\000\002" +
+    "\023\006\000\002\023\007\000\002\023\007\000\002\023" +
+    "\012\000\002\023\017\000\002\024\005\000\002\024\005" +
+    "\000\002\024\004\000\002\024\006\000\002\024\006\000" +
+    "\002\024\006\000\002\024\006\000\002\024\007\000\002" +
+    "\024\007\000\002\024\010\000\002\024\007\000\002\024" +
+    "\010\000\002\024\005\000\002\024\010\000\002\024\011" +
+    "\000\002\024\005\000\002\024\005\000\002\025\005\000" +
+    "\002\025\005\000\002\025\012\000\002\025\012\000\002" +
+    "\025\012\000\002\025\012\000\002\025\006\000\002\025" +
+    "\011\000\002\025\011\000\002\025\011\000\002\025\011" +
+    "\000\002\025\011\000\002\027\013" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -436,7 +440,25 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 24: // METODOS ::= consi para id parc pyc 
+          case 24: // METODOS ::= elsi llavea llavec 
+            {
+              Object RESULT =null;
+		
+              CUP$Sintacticojs$result = parser.getSymbolFactory().newSymbol("METODOS",17, ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.elementAt(CUP$Sintacticojs$top-2)), ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.peek()), RESULT);
+            }
+          return CUP$Sintacticojs$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 25: // METODOS ::= elsi ife llavea llavec 
+            {
+              Object RESULT =null;
+		
+              CUP$Sintacticojs$result = parser.getSymbolFactory().newSymbol("METODOS",17, ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.elementAt(CUP$Sintacticojs$top-3)), ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.peek()), RESULT);
+            }
+          return CUP$Sintacticojs$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 26: // METODOS ::= consi para id parc pyc 
             {
               Object RESULT =null;
 		
@@ -445,7 +467,7 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 25: // METODOS ::= id para id parc pyc 
+          case 27: // METODOS ::= id para id parc pyc 
             {
               Object RESULT =null;
 		
@@ -454,7 +476,7 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 26: // METODOS ::= ife para INSTRUCCIONESIF COMPARACIONES parc cora INSTRUCCIONES corc 
+          case 28: // METODOS ::= ife para INSTRUCCIONESIF COMPARACIONES parc cora INSTRUCCIONES corc 
             {
               Object RESULT =null;
 		
@@ -463,7 +485,7 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 27: // METODOS ::= id para id menos digito coma id coma id coma id parc pyc 
+          case 29: // METODOS ::= id para id menos digito coma id coma id coma id parc pyc 
             {
               Object RESULT =null;
 		
@@ -472,7 +494,7 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 28: // OPERACIONES ::= id menos menos 
+          case 30: // OPERACIONES ::= id menos menos 
             {
               Object RESULT =null;
 		
@@ -481,7 +503,7 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 29: // OPERACIONES ::= id mas mas 
+          case 31: // OPERACIONES ::= id mas mas 
             {
               Object RESULT =null;
 		
@@ -490,7 +512,7 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 30: // OPERACIONES ::= id id 
+          case 32: // OPERACIONES ::= id id 
             {
               Object RESULT =null;
 		
@@ -499,7 +521,7 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 31: // OPERACIONES ::= id menig digito pyc 
+          case 33: // OPERACIONES ::= id menig digito pyc 
             {
               Object RESULT =null;
 		
@@ -508,7 +530,7 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 32: // OPERACIONES ::= id menor id pyc 
+          case 34: // OPERACIONES ::= id menor id pyc 
             {
               Object RESULT =null;
 		
@@ -517,7 +539,7 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 33: // OPERACIONES ::= id mayig id pyc 
+          case 35: // OPERACIONES ::= id mayig id pyc 
             {
               Object RESULT =null;
 		
@@ -526,7 +548,7 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 34: // OPERACIONES ::= id mayor id pyc 
+          case 36: // OPERACIONES ::= id mayor id pyc 
             {
               Object RESULT =null;
 		
@@ -535,7 +557,7 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 35: // OPERACIONES ::= id igual id mas por 
+          case 37: // OPERACIONES ::= id igual id mas por 
             {
               Object RESULT =null;
 		
@@ -544,7 +566,7 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 36: // OPERACIONES ::= id igual id mas cadena 
+          case 38: // OPERACIONES ::= id igual id mas cadena 
             {
               Object RESULT =null;
 		
@@ -553,7 +575,7 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 37: // OPERACIONES ::= id igual id mas cadena pyc 
+          case 39: // OPERACIONES ::= id igual id mas cadena pyc 
             {
               Object RESULT =null;
 		
@@ -562,7 +584,7 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 38: // OPERACIONES ::= id igual id mas digito 
+          case 40: // OPERACIONES ::= id igual id mas digito 
             {
               Object RESULT =null;
 		
@@ -571,7 +593,7 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 39: // OPERACIONES ::= id igual id mas digito pyc 
+          case 41: // OPERACIONES ::= id igual id mas digito pyc 
             {
               Object RESULT =null;
 		
@@ -580,7 +602,7 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 40: // OPERACIONES ::= id mas cadena 
+          case 42: // OPERACIONES ::= id mas cadena 
             {
               Object RESULT =null;
 		
@@ -589,7 +611,7 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 41: // OPERACIONES ::= id igual id por id pyc 
+          case 43: // OPERACIONES ::= id igual id por id pyc 
             {
               Object RESULT =null;
 		
@@ -598,7 +620,7 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 42: // OPERACIONES ::= id mayig digito and id menig digito 
+          case 44: // OPERACIONES ::= id mayig digito and id menig digito 
             {
               Object RESULT =null;
 		
@@ -607,7 +629,25 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 43: // INSTRUCCIONESIF ::= id iguall digito 
+          case 45: // OPERACIONES ::= id mas mas 
+            {
+              Object RESULT =null;
+		
+              CUP$Sintacticojs$result = parser.getSymbolFactory().newSymbol("OPERACIONES",18, ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.elementAt(CUP$Sintacticojs$top-2)), ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.peek()), RESULT);
+            }
+          return CUP$Sintacticojs$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 46: // OPERACIONES ::= id menos menos 
+            {
+              Object RESULT =null;
+		
+              CUP$Sintacticojs$result = parser.getSymbolFactory().newSymbol("OPERACIONES",18, ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.elementAt(CUP$Sintacticojs$top-2)), ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.peek()), RESULT);
+            }
+          return CUP$Sintacticojs$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 47: // INSTRUCCIONESIF ::= id iguall digito 
             {
               Object RESULT =null;
 		
@@ -616,11 +656,110 @@ class CUP$Sintacticojs$actions {
           return CUP$Sintacticojs$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 44: // INSTRUCCIONESIF ::= id iguall 
+          case 48: // INSTRUCCIONESIF ::= id iguall digito 
             {
               Object RESULT =null;
 		
-              CUP$Sintacticojs$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONESIF",19, ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.elementAt(CUP$Sintacticojs$top-1)), ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.peek()), RESULT);
+              CUP$Sintacticojs$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONESIF",19, ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.elementAt(CUP$Sintacticojs$top-2)), ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.peek()), RESULT);
+            }
+          return CUP$Sintacticojs$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 49: // INSTRUCCIONESIF ::= id mayor digito and id dif igual id 
+            {
+              Object RESULT =null;
+		
+              CUP$Sintacticojs$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONESIF",19, ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.elementAt(CUP$Sintacticojs$top-7)), ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.peek()), RESULT);
+            }
+          return CUP$Sintacticojs$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 50: // INSTRUCCIONESIF ::= id menor digito and id dif igual id 
+            {
+              Object RESULT =null;
+		
+              CUP$Sintacticojs$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONESIF",19, ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.elementAt(CUP$Sintacticojs$top-7)), ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.peek()), RESULT);
+            }
+          return CUP$Sintacticojs$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 51: // INSTRUCCIONESIF ::= id mayig digito and id dif igual id 
+            {
+              Object RESULT =null;
+		
+              CUP$Sintacticojs$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONESIF",19, ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.elementAt(CUP$Sintacticojs$top-7)), ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.peek()), RESULT);
+            }
+          return CUP$Sintacticojs$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 52: // INSTRUCCIONESIF ::= id menig digito and id dif igual id 
+            {
+              Object RESULT =null;
+		
+              CUP$Sintacticojs$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONESIF",19, ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.elementAt(CUP$Sintacticojs$top-7)), ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.peek()), RESULT);
+            }
+          return CUP$Sintacticojs$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 53: // INSTRUCCIONESIF ::= id dif igual digito 
+            {
+              Object RESULT =null;
+		
+              CUP$Sintacticojs$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONESIF",19, ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.elementAt(CUP$Sintacticojs$top-3)), ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.peek()), RESULT);
+            }
+          return CUP$Sintacticojs$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 54: // INSTRUCCIONESIF ::= id menig digito and id mayor digito 
+            {
+              Object RESULT =null;
+		
+              CUP$Sintacticojs$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONESIF",19, ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.elementAt(CUP$Sintacticojs$top-6)), ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.peek()), RESULT);
+            }
+          return CUP$Sintacticojs$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 55: // INSTRUCCIONESIF ::= id mayig digito and id menor digito 
+            {
+              Object RESULT =null;
+		
+              CUP$Sintacticojs$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONESIF",19, ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.elementAt(CUP$Sintacticojs$top-6)), ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.peek()), RESULT);
+            }
+          return CUP$Sintacticojs$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 56: // INSTRUCCIONESIF ::= id menig digito and id menor digito 
+            {
+              Object RESULT =null;
+		
+              CUP$Sintacticojs$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONESIF",19, ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.elementAt(CUP$Sintacticojs$top-6)), ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.peek()), RESULT);
+            }
+          return CUP$Sintacticojs$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 57: // INSTRUCCIONESIF ::= id mayig digito and id mayor digito 
+            {
+              Object RESULT =null;
+		
+              CUP$Sintacticojs$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONESIF",19, ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.elementAt(CUP$Sintacticojs$top-6)), ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.peek()), RESULT);
+            }
+          return CUP$Sintacticojs$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 58: // INSTRUCCIONESIF ::= id mayig digito and id menig digito 
+            {
+              Object RESULT =null;
+		
+              CUP$Sintacticojs$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONESIF",19, ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.elementAt(CUP$Sintacticojs$top-6)), ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.peek()), RESULT);
+            }
+          return CUP$Sintacticojs$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 59: // INSTRUCCIONESFOR ::= fory para DECLARACION INSTRUCCIONESIF pyc OPERACIONES parc llavea llavec 
+            {
+              Object RESULT =null;
+		
+              CUP$Sintacticojs$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONESFOR",21, ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.elementAt(CUP$Sintacticojs$top-8)), ((java_cup.runtime.Symbol)CUP$Sintacticojs$stack.peek()), RESULT);
             }
           return CUP$Sintacticojs$result;
 

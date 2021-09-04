@@ -55,6 +55,7 @@ non terminal METODOS;
 non terminal OPERACIONES;
 non terminal INSTRUCCIONESIF;
 non terminal COMPARACIONES;
+non terminal INSTRUCCIONESFOR;
 
 
 
@@ -102,6 +103,8 @@ DECLARACION::= vare id igual cadena pyc {::}
             
 METODOS::= id para id parc cora INSTRUCCIONES corc {::}
         | id para parc cora INSTRUCCIONES corc {::}
+        | elsi llavea llavec {::}
+        | elsi ife llavea llavec {::}
         | consi para id parc pyc {::}
         | id para id parc pyc {::}
         | ife para INSTRUCCIONESIF COMPARACIONES parc cora INSTRUCCIONES corc {::}
@@ -121,10 +124,31 @@ OPERACIONES::= id menos menos {::}
             | id igual id mas digito pyc {::}
             | id mas cadena {::}
             | id igual id por id pyc {::}
-            | id mayig digito and id menig digito {::};
+            | id mayig digito and id menig digito {::}
+            | id mas mas {::}
+            | id menos menos {::};
 
 INSTRUCCIONESIF::= id iguall digito {::}
-                | id iguall {::};
+                | id iguall digito {::}
+                | id mayor digito and id dif igual id {::}
+                | id menor digito and id dif igual id {::}
+                | id mayig digito and id dif igual id {::}
+                | id menig digito and id dif igual id {::}
+                | id dif igual digito {::}
+                | id menig digito and id mayor digito {::}
+                | id mayig digito and id menor digito {::}
+                | id menig digito and id menor digito {::}
+                | id mayig digito and id mayor digito {::}
+                | id mayig digito and id menig digito {::};
+
+INSTRUCCIONESFOR::= fory para DECLARACION INSTRUCCIONESIF pyc OPERACIONES parc llavea llavec {::};
+
+
+
+
+                
+                
+                
             
       
             
