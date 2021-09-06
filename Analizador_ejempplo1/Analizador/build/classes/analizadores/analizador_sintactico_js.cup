@@ -59,6 +59,7 @@ non terminal METODOS;
 non terminal FORMETOD;
 non terminal VARIAS;
 non terminal C;
+non terminal IFMETOD;
 
 
 
@@ -101,11 +102,12 @@ C::= vare id igual O pyc {::}
     | lete id igual O pyc {::}
     | conste id igual O pyc {::};
 
-METODOS::= FORMETOD {::};
+METODOS::= FORMETOD {::}
+        |IFMETOD {::};
 
 FORMETOD::= fory para parc llavea llavec {::};
             
-
+IFMETOD::= ife para parc llavea llavec {::};
 
            
             
