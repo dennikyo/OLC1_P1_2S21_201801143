@@ -33,7 +33,7 @@ action code
 
 //------> declaracion de terminales 
 
-terminal String mas, dou,coma, por,id, div, str, menos, pyc, deci, cora, corc, digito, cadena,  para, parc, igual, llavea, llavec, dosp,clase,vare,lete,conste,ife,elsi,fory,whi,du,swi,consi,bre,req,iguall,dif,menor,menig,mayor,mayig,and,or,not, pote,modu;
+terminal String mas, deci,coma, por,id, div, str, menos,dosp,pyc, cora, keis, bre, defi, corc, digito, cadena,  para, parc, igual, llavea, llavec,clase,vare,lete,conste,ife,elsi,fory,whi,du,swi,consi,req,iguall,dif,menor,menig,mayor,mayig,and,or,not, pote,modu;
  
 
 //------> declaracion de no terminales
@@ -51,12 +51,14 @@ non terminal SWITCH;
 non terminal BREAK;
 non terminal REQUIRE;
 non terminal DECLARACION, DECLARACIONES;
-non terminal METODOS;
-non terminal OPERACIONES;
-non terminal INSTRUCCIONESIF;
+non terminal OPERACIONES, OPERACION;
 non terminal COMPARACIONES;
-non terminal INSTRUCCIONESFOR;
-
+non terminal O;
+non terminal FUNCION;
+non terminal METODOS;
+non terminal FORMETOD;
+non terminal VARIAS;
+non terminal C;
 
 
 
@@ -72,89 +74,40 @@ start with INICIO;
 
 /*--------------- 3ra Area: Reglas Semanticas -----------------------*/
 
-INICIO::= INSTRUCCIONES:a    {::} 
+INICIO::= clase id llavea INSTRUCCIONES llavec:a    {::} 
        ;
-
 INSTRUCCIONES::= INSTRUCCIONES:a INSTRUCCION:b    {::}
        | INSTRUCCION:a                            {::}
-       ;
-INSTRUCCION::= clase id llavea DECLARACIONES llavec {::}
-            | vare id igual cadena pyc {::}
-            | vare id igual cadena {::}
-            | lete id igual cadena pyc {::}
-            | lete id igual cadena {::}
-            | conste id igual dou pyc {::}
-            | conste id igual cadena pyc {::};
+       
+       | INSTRUCCIONES:a FUNCION:b            {::}
+       | FUNCION:a                           {::}
+       | INSTRUCCIONES:a METODOS:b          {::}    
+       | METODOS:a                           {::};
+                   
 
+FUNCION::= id para id parc llavea C llavec {::};
 
+INSTRUCCION::= id pyc {::};
+            
 DECLARACIONES::= DECLARACIONES DECLARACION
                 |DECLARACION;
+O::= deci {::}
+    |cadena {::}
+    |digito{::};
 
-DECLARACION::= vare id igual cadena pyc {::}
-            | vare id igual cadena {::}
-            | vare id igual id mas id {::}
-            | lete id igual cadena pyc {::}
-            | lete id igual cadena {::}
-            | lete id igual id mas id {::}
-            | conste id igual dou pyc {::}
-            | conste id igual cadena pyc {::}
-            | conste id igual id mas id {::};
-            
-            
-METODOS::= id para id parc cora INSTRUCCIONES corc {::}
-        | id para parc cora INSTRUCCIONES corc {::}
-        | elsi llavea llavec {::}
-        | elsi ife llavea llavec {::}
-        | consi para id parc pyc {::}
-        | id para id parc pyc {::}
-        | ife para INSTRUCCIONESIF COMPARACIONES parc cora INSTRUCCIONES corc {::}
-        | id para id menos digito coma id coma id coma id parc pyc {::};
-        
-OPERACIONES::= id menos menos {::}
-            | id mas mas {::}
-            | id id {::}
-            | id menig digito pyc {::}
-            | id menor id pyc {::}
-            | id mayig id pyc {::}
-            | id mayor id pyc {::}
-            | id igual id mas por {::}
-            | id igual id mas cadena {::}
-            | id igual id mas cadena pyc {::}
-            | id igual id mas digito {::}
-            | id igual id mas digito pyc {::}
-            | id mas cadena {::}
-            | id igual id por id pyc {::}
-            | id mayig digito and id menig digito {::}
-            | id mas mas {::}
-            | id menos menos {::};
+VARIAS::= VARIAS C
+        |C;
+C::= vare id igual O pyc {::}
+    | lete id igual O pyc {::}
+    | conste id igual O pyc {::};
 
-INSTRUCCIONESIF::= id iguall digito {::}
-                | id iguall digito {::}
-                | id mayor digito and id dif igual id {::}
-                | id menor digito and id dif igual id {::}
-                | id mayig digito and id dif igual id {::}
-                | id menig digito and id dif igual id {::}
-                | id dif igual digito {::}
-                | id menig digito and id mayor digito {::}
-                | id mayig digito and id menor digito {::}
-                | id menig digito and id menor digito {::}
-                | id mayig digito and id mayor digito {::}
-                | id mayig digito and id menig digito {::};
+METODOS::= FORMETOD {::};
 
-INSTRUCCIONESFOR::= fory para DECLARACION INSTRUCCIONESIF pyc OPERACIONES parc llavea llavec {::};
-
-
-
-
-                
-                
-                
-            
-      
+FORMETOD::= fory para parc llavea llavec {::};
             
 
 
-            
+           
             
 
 

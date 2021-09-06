@@ -30,7 +30,7 @@ import javax.swing.JOptionPane;
 cadena              = [\"][^\"\n]+[\"]
 id                  = [A-z0-9]+("_"|[A-z]|[0-9])*
 decimal             = [0-9]+("."[0-9]*)
-digito              = [0-9]+
+digito              = [0-9]+([.][0-9]+)?
 
 
 //------> Estados
@@ -65,6 +65,7 @@ digito              = [0-9]+
 "/"         { System.out.println("Reconocio "+yytext()+" div"); return new Symbol(Simbolosjs.div, yycolumn, yyline, yytext()); }
 "**"         { System.out.println("Reconocio "+yytext()+" pote"); return new Symbol(Simbolosjs.pote, yycolumn, yyline, yytext()); }
 "%"         { System.out.println("Reconocio "+yytext()+" modu"); return new Symbol(Simbolosjs.modu, yycolumn, yyline, yytext()); }
+":"         { System.out.println("Reconocio "+yytext()+" dosp"); return new Symbol(Simbolosjs.dosp, yycolumn, yyline, yytext()); }
 
 
 
@@ -85,7 +86,8 @@ digito              = [0-9]+
 "console.log" { System.out.println("Reconocio "+yytext()+" consi"); return new Symbol(Simbolosjs.consi, yycolumn, yyline, yytext()); }
 "break" { System.out.println("Reconocio "+yytext()+" bre"); return new Symbol(Simbolosjs.bre, yycolumn, yyline, yytext()); }
 "require" { System.out.println("Reconocio "+yytext()+" req"); return new Symbol(Simbolosjs.req, yycolumn, yyline, yytext()); }
-
+"case" { System.out.println("Reconocio "+yytext()+" keis"); return new Symbol(Simbolosjs.keis, yycolumn, yyline, yytext()); }
+"default" { System.out.println("Reconocio "+yytext()+" defi"); return new Symbol(Simbolosjs.defi, yycolumn, yyline, yytext()); }
 
 
 

@@ -6,7 +6,9 @@
 package ventana_compi;
 
 import analizadores.Analizador_lexico;
+import analizadores.Analizador_lexico_js;
 import analizadores.Sintactico;
+import analizadores.Sintacticojs;
 import java.io.BufferedReader;
 import java.io.StringReader;
 import java.util.logging.Level;
@@ -181,7 +183,7 @@ public class interfaz extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try {
-            Sintactico sintactico = new Sintactico(new Analizador_lexico(new BufferedReader( new StringReader(jTextArea1.getText()))));
+            Sintacticojs sintactico = new Sintacticojs (new Analizador_lexico_js(new BufferedReader( new StringReader(jTextArea1.getText()))));
             sintactico.parse();
             System.out.println("Todo Correcto ");
             

@@ -8,66 +8,70 @@ package analizadores;
 /** CUP generated class containing symbol constants. */
 public class Simbolosjs {
   /* terminals */
-  public static final int modu = 45;
-  public static final int dif = 36;
-  public static final int consi = 32;
-  public static final int du = 30;
-  public static final int whi = 29;
+  public static final int modu = 46;
+  public static final int dif = 37;
+  public static final int consi = 34;
+  public static final int du = 32;
+  public static final int whi = 31;
   public static final int coma = 4;
-  public static final int pote = 44;
-  public static final int igual = 18;
-  public static final int elsi = 27;
-  public static final int llavec = 20;
-  public static final int llavea = 19;
-  public static final int bre = 33;
-  public static final int iguall = 35;
-  public static final int clase = 22;
+  public static final int pote = 45;
+  public static final int igual = 21;
+  public static final int elsi = 29;
+  public static final int llavec = 23;
+  public static final int llavea = 22;
+  public static final int bre = 14;
+  public static final int iguall = 36;
+  public static final int clase = 24;
   public static final int menos = 9;
-  public static final int menor = 37;
-  public static final int ife = 26;
+  public static final int menor = 38;
+  public static final int ife = 28;
   public static final int EOF = 0;
-  public static final int dosp = 21;
-  public static final int pyc = 10;
-  public static final int parc = 17;
+  public static final int dosp = 10;
+  public static final int pyc = 11;
+  public static final int parc = 20;
   public static final int mas = 2;
-  public static final int para = 16;
+  public static final int para = 19;
   public static final int error = 1;
-  public static final int menig = 38;
-  public static final int corc = 13;
-  public static final int fory = 28;
-  public static final int mayor = 39;
+  public static final int menig = 39;
+  public static final int corc = 16;
+  public static final int fory = 30;
+  public static final int mayor = 40;
   public static final int cora = 12;
-  public static final int or = 42;
+  public static final int or = 43;
   public static final int por = 5;
-  public static final int mayig = 40;
+  public static final int mayig = 41;
   public static final int str = 8;
-  public static final int conste = 25;
-  public static final int req = 34;
+  public static final int conste = 27;
+  public static final int req = 35;
   public static final int id = 6;
-  public static final int lete = 24;
-  public static final int swi = 31;
-  public static final int not = 43;
-  public static final int and = 41;
+  public static final int lete = 26;
+  public static final int swi = 33;
+  public static final int keis = 13;
+  public static final int not = 44;
+  public static final int and = 42;
   public static final int div = 7;
-  public static final int vare = 23;
-  public static final int deci = 11;
-  public static final int dou = 3;
-  public static final int digito = 14;
-  public static final int cadena = 15;
+  public static final int vare = 25;
+  public static final int deci = 3;
+  public static final int defi = 15;
+  public static final int digito = 17;
+  public static final int cadena = 18;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
   "mas",
-  "dou",
+  "deci",
   "coma",
   "por",
   "id",
   "div",
   "str",
   "menos",
+  "dosp",
   "pyc",
-  "deci",
   "cora",
+  "keis",
+  "bre",
+  "defi",
   "corc",
   "digito",
   "cadena",
@@ -76,7 +80,6 @@ public class Simbolosjs {
   "igual",
   "llavea",
   "llavec",
-  "dosp",
   "clase",
   "vare",
   "lete",
@@ -88,7 +91,6 @@ public class Simbolosjs {
   "du",
   "swi",
   "consi",
-  "bre",
   "req",
   "iguall",
   "dif",
