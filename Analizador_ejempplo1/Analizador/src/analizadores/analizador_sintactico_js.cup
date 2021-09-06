@@ -60,6 +60,11 @@ non terminal FORMETOD;
 non terminal VARIAS;
 non terminal C;
 non terminal IFMETOD;
+non terminal IFELSEMETOD;
+non terminal WHILEMETOD;
+non terminal MIXELSEMETOD;
+non terminal DOWHILEMETOD;
+non terminal SWITCHMETOD;
 
 
 
@@ -103,15 +108,23 @@ C::= vare id igual O pyc {::}
     | conste id igual O pyc {::};
 
 METODOS::= FORMETOD {::}
-        |IFMETOD {::};
+        |IFMETOD {::}
+        | IFELSEMETOD {::}
+        | WHILEMETOD {::}
+        | MIXELSEMETOD {::}
+        | DOWHILEMETOD{::}
+        | SWITCHMETOD {::};
 
 FORMETOD::= fory para parc llavea llavec {::};
             
 IFMETOD::= ife para parc llavea llavec {::};
 
-           
-            
+IFELSEMETOD::= ife para parc llavea llavec elsi llavea llavec {::};
 
+MIXELSEMETOD::= ife elsi para parc llavea llavec {::};
 
+WHILEMETOD::= whi para parc llavea llavec {::};
 
+DOWHILEMETOD::= du llavea llavec whi para parc llavea llavec {::};
 
+SWITCHMETOD::= swi para parc llavea llavec {::};
