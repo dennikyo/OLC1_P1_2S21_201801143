@@ -65,6 +65,7 @@ non terminal WHILEMETOD;
 non terminal MIXELSEMETOD;
 non terminal DOWHILEMETOD;
 non terminal SWITCHMETOD;
+non terminal METODOVACIO;
 
 
 
@@ -88,7 +89,9 @@ INSTRUCCIONES::= INSTRUCCIONES:a INSTRUCCION:b    {::}
        | INSTRUCCIONES:a FUNCION:b            {::}
        | FUNCION:a                           {::}
        | INSTRUCCIONES:a METODOS:b          {::}    
-       | METODOS:a                           {::};
+       | METODOS:a                           {::}
+       | INSTRUCCIONES:a C:b                {::}
+       | C;
                    
 
 FUNCION::= id para id parc llavea C llavec {::};
@@ -105,7 +108,8 @@ VARIAS::= VARIAS C
         |C;
 C::= vare id igual O pyc {::}
     | lete id igual O pyc {::}
-    | conste id igual O pyc {::};
+    | conste id igual O pyc {::}
+    | id igual O pyc {::};
 
 METODOS::= FORMETOD {::}
         |IFMETOD {::}
@@ -113,7 +117,8 @@ METODOS::= FORMETOD {::}
         | WHILEMETOD {::}
         | MIXELSEMETOD {::}
         | DOWHILEMETOD{::}
-        | SWITCHMETOD {::};
+        | SWITCHMETOD {::}
+        | METODOVACIO {::};
 
 FORMETOD::= fory para parc llavea llavec {::};
             
@@ -128,3 +133,5 @@ WHILEMETOD::= whi para parc llavea llavec {::};
 DOWHILEMETOD::= du llavea llavec whi para parc llavea llavec {::};
 
 SWITCHMETOD::= swi para parc llavea llavec {::};
+
+METODOVACIO::= id para parc llavea llavec {::};
