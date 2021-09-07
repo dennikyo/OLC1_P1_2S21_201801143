@@ -71,6 +71,7 @@ digito              = [0-9]+([.][0-9]+)?
 
 
 
+
 //-----> Palabras reservadas
 
 "class" { System.out.println("Reconocio "+yytext()+" clase"); return new Symbol(Simbolosjs.clase, yycolumn, yyline, yytext()); }

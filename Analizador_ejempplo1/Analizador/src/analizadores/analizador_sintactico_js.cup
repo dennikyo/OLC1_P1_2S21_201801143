@@ -99,15 +99,16 @@ INSTRUCCIONES::= INSTRUCCIONES:a INSTRUCCION:b    {::}
        | INSTRUCCIONES:a SENTENCIAS:b          {::}    
        | SENTENCIAS:a                           {::}
        | INSTRUCCIONES:a C:b                {::}
-       | C;
+       | C                                  {::}
+       | INSTRUCCIONES:a OPERACIONES:B      {::}
+       | OPERACIONES:a                      {::};
+
                    
 
-FUNCION::= id para id parc llavea C llavec {::};
+FUNCION::= id para id parc llavea INSTRUCCIONES llavec {::};
 
 INSTRUCCION::= id pyc {::};
             
-DECLARACIONES::= DECLARACIONES DECLARACION
-                |DECLARACION;
 O::= deci {::}
     |cadena {::}
     |digito{::}
@@ -135,52 +136,25 @@ CONTENIDOS::= C {::}
             | id igual id mas O pyc {::}
             | consi para O parc pyc {::};
 
-PRUEBA::= lete id igual id pyc id mayig O pyc id menos menos{::};
-
-SENTENCIAS::= FORMETOD {::}
-        | IFMETOD {::}
-        | IFELSEMETOD {::}
-        | WHILEMETOD {::}
-        | MIXELSEMETOD {::}
-        | DOWHILEMETOD{::}
-        | SWITCHMETOD {::}
-        | METODOVACIO {::};
-
-SIMBILOS::= mas {::}
-        | menos {::}
-        | mas mas {::}
-        | menos menos {::};
-
-
-FORMETOD::= fory para DECLARACIONES OPERACIONES OPERACIONES parc llavea  llavec {::};
-            
-IFMETOD::= ife para parc llavea llavec {::};
-
-IFELSEMETOD::= ife para parc llavea llavec elsi llavea llavec {::};
-
-MIXELSEMETOD::= ife elsi para parc llavea llavec {::};
-
-WHILEMETOD::= whi para parc llavea llavec {::};
-
-DOWHILEMETOD::= du llavea llavec whi para parc llavea llavec {::};
-
-SWITCHMETOD::= swi para parc llavea llavec {::};
-
-METODOVACIO::= id para parc llavea C llavec {::};
 
 METODOS::= id para id parc llavea llavec {::}
         | id para parc llavea C llavec {::}
         | id para parc llavea llavec {::}
         | consi para id parc pyc {::}
         | id para cadena parc pyc {::}
-        | id para O parc pyc {::}
-        | id SIMBILOS O coma {::};
+        | id para O parc pyc {::};
+
+DECLARACIONES::= DECLARACIONES DECLARACION
+                |DECLARACION;
 
 DECLARACION::= id igual O pyc {::}
                 | vare id igual O pyc {::}
                 | lete id igual O pyc {::}
                 | conste id igual O pyc {::}
                 | lete id igual id mas id pyc {::};
+
+OPERACION::= OPERACION OPERACIONES
+            | OPERACIONES;
 
 OPERACIONES::= id menos menos {::}
             | id mas mas {::}
@@ -194,3 +168,30 @@ OPERACIONES::= id menos menos {::}
             | id igual  id por id pyc {::}
             | id igual  id por id {::}
             | id mayig digito and id menig digito {::};
+           
+SENTENCIAS::= FORMETOD {::}
+        | IFMETOD {::}
+        | IFELSEMETOD {::}
+        | WHILEMETOD {::}
+        | MIXELSEMETOD {::}
+        | DOWHILEMETOD{::}
+        | SWITCHMETOD {::}
+        | METODOVACIO {::};
+
+
+FORMETOD::= fory para DECLARACIONES OPERACIONES OPERACIONES parc llavea INSTRUCCIONES llavec {::};
+            
+IFMETOD::= ife para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
+
+IFELSEMETOD::= ife para OPERACIONES parc llavea llavec elsi llavea INSTRUCCIONES llavec {::};
+
+MIXELSEMETOD::= ife elsi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
+
+WHILEMETOD::= whi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
+
+DOWHILEMETOD::= du llavea DECLARACIONES llavec whi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
+
+SWITCHMETOD::= swi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
+
+METODOVACIO::= id para parc llavea C llavec {::};
+
