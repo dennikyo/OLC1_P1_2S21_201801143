@@ -33,7 +33,7 @@ action code
 
 //------> declaracion de terminales 
 
-terminal String mas, deci,coma, por,id, div, str, menos,dosp,pyc, cora, keis, bre, defi, corc, digito, cadena,  para, parc, igual, llavea, llavec,clase,vare,lete,conste,ife,elsi,fory,whi,du,swi,consi,req,iguall,dif,menor,menig,mayor,mayig,and,or,not, pote,modu;
+terminal String mas, deci,coma, por,id, div, str, menos,dosp,pyc, keis, bre, defi, digito, cadena,  para, parc, igual, llavea, llavec,clase,vare,lete,conste,ife,elsi,fory,whi,du,swi,consi,req,iguall,dif,menor,menig,mayor,mayig,and,or,not, pote,modu;
  
 
 //------> declaracion de no terminales
@@ -74,6 +74,7 @@ non terminal CONTENIDOS;
 non terminal PRUEBA;
 non terminal SENTENCIAS;
 non terminal SIMBILOS;
+non terminal ELSEMETODE;
 
 
 
@@ -167,7 +168,7 @@ OPERACIONES::= id menos menos {::}
             | id igual id mas cadena {::}
             | id igual  id por id pyc {::}
             | id igual  id por id {::}
-            | id mayig digito and id menig digito {::};
+            | id mayig O and id menig O {::};
            
 SENTENCIAS::= FORMETOD {::}
         | IFMETOD {::}
@@ -176,7 +177,8 @@ SENTENCIAS::= FORMETOD {::}
         | MIXELSEMETOD {::}
         | DOWHILEMETOD{::}
         | SWITCHMETOD {::}
-        | METODOVACIO {::};
+        | METODOVACIO {::}
+        | ELSEMETODE {::};
 
 
 FORMETOD::= fory para DECLARACIONES OPERACIONES OPERACIONES parc llavea INSTRUCCIONES llavec {::};
@@ -195,3 +197,4 @@ SWITCHMETOD::= swi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
 
 METODOVACIO::= id para parc llavea C llavec {::};
 
+ELSEMETODE::= elsi llavea OPERACIONES llavec {::};
