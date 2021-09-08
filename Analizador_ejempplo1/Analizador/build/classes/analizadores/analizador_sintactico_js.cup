@@ -107,6 +107,8 @@ INSTRUCCIONES::= INSTRUCCIONES:a FUNCION:b            {::}
 
 FUNCION::= id para id parc llavea INSTRUCCIONES llavec {::}
         | consi para id parc pyc {::}
+        | consi para id mas O parc pyc {::}
+        | consi para O mas id mas O mas O parc pyc {::}             
         | id para parc llavea INSTRUCCIONES llavec{::}
         | id para parc pyc {::}
         | id para parc {::};
