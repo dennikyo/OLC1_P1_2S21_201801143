@@ -134,12 +134,13 @@ DECLARACION::= id igual O pyc {::}
                 | lete id igual O pyc {::}
                 | conste id igual O pyc {::}
                 | lete id igual id mas id pyc {::}
-                | id igual id por id pyc {::}
-                | id mas mas pyc {::};
+                | id igual id por id pyc {::};
+                
 
 
 OPERACIONES::= id menos menos {::}
             | id mas mas {::}
+            | id mas mas pyc {::}
             | id id {::}
             | id mayig O pyc {::}
             | id igual id mas O pyc {::}
@@ -170,9 +171,9 @@ MIXELSEMETOD::= ife elsi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
 
 WHILEMETOD::= whi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
 
-DOWHILEMETOD::= du llavea DECLARACION llavec whi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
+DOWHILEMETOD::= du llavea DECLARACION OPERACIONES llavec whi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
 
-SWITCHMETOD::= swi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
+SWITCHMETOD::= swi para OPERACIONES  parc llavea INSTRUCCIONES llavec {::};
 
 ELSEMETODE::= elsi llavea INSTRUCCIONES llavec {::};
             
