@@ -111,7 +111,9 @@ FUNCION::= id para id parc llavea INSTRUCCIONES llavec {::}
         | consi para O mas id mas O mas O parc pyc {::}             
         | id para parc llavea INSTRUCCIONES llavec{::}
         | id para parc pyc {::}
-        | id para parc {::};
+        | id para parc {::} 
+        | id para id coma id coma id coma id parc llavea INSTRUCCIONES llavec{::}
+        | id para id menos O coma id coma id coma id parc pyc {::};
 
             
 O::= deci {::}
@@ -131,7 +133,9 @@ DECLARACION::= id igual O pyc {::}
                 | vare id igual O pyc {::}
                 | lete id igual O pyc {::}
                 | conste id igual O pyc {::}
-                | lete id igual id mas id pyc {::};
+                | lete id igual id mas id pyc {::}
+                | id igual id por id pyc {::}
+                | id mas mas pyc {::};
 
 
 OPERACIONES::= id menos menos {::}
@@ -140,8 +144,6 @@ OPERACIONES::= id menos menos {::}
             | id mayig O pyc {::}
             | id igual id mas O pyc {::}
             | id igual id mas O {::}
-            | id igual  id por id pyc {::}
-            | id igual  id por id {::}
             | id mayig O and id menig O {::}
             | id menig O pyc{::}
             | id iguall O {::}
