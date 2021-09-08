@@ -99,9 +99,9 @@ INSTRUCCIONES::= INSTRUCCIONES:a INSTRUCCION:b    {::}
        | FUNCION:a                           {::}
        | INSTRUCCIONES:a SENTENCIAS:b          {::}    
        | SENTENCIAS:a                           {::}
-       | INSTRUCCIONES:a C:b                {::}
-       | C                                  {::}
-       | INSTRUCCIONES:a OPERACIONES:B      {::}
+       | INSTRUCCIONES:a DECLARACIONES:b                {::}
+       | DECLARACIONES:a                                 {::}
+       | INSTRUCCIONES:a OPERACIONES:b      {::}
        | OPERACIONES:a                      {::};
 
                    
@@ -115,35 +115,11 @@ O::= deci {::}
     |digito{::}
     |id {::};
 
-VARIAS::= VARIAS C
-        |C;
-C::= vare id igual O pyc {::}
-    | lete id igual O pyc {::}
-    | conste id igual O pyc {::}
-    | id igual O pyc {::};
-
-VARIANTES::= id mayig O pyc{::}
-            | id mas mas {::}
-            | id menos menos {::}
-            | id menig O pyc{::}
-            | id iguall O {::}
-            | id menor O pyc {::}
-            | id mayor O pyc {::};
-
-VALORES::= VALORES:a pyc VARIANTES:b {::}
-        | VARIANTES:a {::};
-
-CONTENIDOS::= C {::}
-            | id igual id mas O pyc {::}
-            | consi para O parc pyc {::};
-
-
 METODOS::= id para id parc llavea llavec {::}
-        | id para parc llavea C llavec {::}
         | id para parc llavea llavec {::}
         | consi para id parc pyc {::}
-        | id para cadena parc pyc {::}
-        | id para O parc pyc {::};
+        | id para O parc pyc {::}
+        | id para O parc {::};
 
 DECLARACIONES::= DECLARACIONES DECLARACION
                 |DECLARACION;
@@ -161,14 +137,15 @@ OPERACIONES::= id menos menos {::}
             | id mas mas {::}
             | id id {::}
             | id mayig O pyc {::}
-            | id menor id pyc {::}
-            | id menig id pyc {::}
-            | id mayor id pyc {::}
             | id igual id mas cadena pyc {::}
             | id igual id mas cadena {::}
             | id igual  id por id pyc {::}
             | id igual  id por id {::}
-            | id mayig O and id menig O {::};
+            | id mayig O and id menig O {::}
+            | id menig O pyc{::}
+            | id iguall O {::}
+            | id menor O pyc {::}
+            | id mayor O pyc {::};
            
 SENTENCIAS::= FORMETOD {::}
         | IFMETOD {::}
@@ -177,7 +154,6 @@ SENTENCIAS::= FORMETOD {::}
         | MIXELSEMETOD {::}
         | DOWHILEMETOD{::}
         | SWITCHMETOD {::}
-        | METODOVACIO {::}
         | ELSEMETODE {::};
 
 
@@ -195,6 +171,6 @@ DOWHILEMETOD::= du llavea DECLARACIONES llavec whi para OPERACIONES parc llavea 
 
 SWITCHMETOD::= swi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
 
-METODOVACIO::= id para parc llavea C llavec {::};
 
-ELSEMETODE::= elsi llavea OPERACIONES llavec {::};
+ELSEMETODE::= elsi llavea INSTRUCCIONES llavec {::};
+            
