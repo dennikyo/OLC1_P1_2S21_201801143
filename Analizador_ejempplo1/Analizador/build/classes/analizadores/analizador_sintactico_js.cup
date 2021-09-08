@@ -146,7 +146,8 @@ OPERACIONES::= id menos menos {::}
             | id igual id mas O pyc {::}
             | id igual id mas O {::}
             | id mayig O and id menig O {::}
-            | id menig O pyc{::}
+            | id menig O pyc {::}
+            | id menig O {::}
             | id iguall O {::}
             | id menor O pyc {::}
             | id mayor O pyc {::};
