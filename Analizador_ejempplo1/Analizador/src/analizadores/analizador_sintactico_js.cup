@@ -171,7 +171,7 @@ MIXELSEMETOD::= ife elsi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
 
 WHILEMETOD::= whi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
 
-DOWHILEMETOD::= du llavea DECLARACION OPERACIONES llavec whi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
+DOWHILEMETOD::= du llavea DECLARACION OPERACIONES llavec whi para OPERACIONES parc pyc {::};
 
 SWITCHMETOD::= swi para OPERACIONES  parc llavea INSTRUCCIONES llavec {::};
 
