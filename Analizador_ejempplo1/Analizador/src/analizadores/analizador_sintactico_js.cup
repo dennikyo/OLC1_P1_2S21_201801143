@@ -99,8 +99,8 @@ INSTRUCCIONES::= INSTRUCCIONES:a INSTRUCCION:b    {::}
        | FUNCION:a                           {::}
        | INSTRUCCIONES:a SENTENCIAS:b          {::}    
        | SENTENCIAS:a                           {::}
-       | INSTRUCCIONES:a DECLARACIONES:b                {::}
-       | DECLARACIONES:a                                 {::}
+       | INSTRUCCIONES:a DECLARACION:b                {::}
+       | DECLARACION:a                                 {::}
        | INSTRUCCIONES:a OPERACIONES:b      {::}
        | OPERACIONES:a                      {::};
 
@@ -121,10 +121,11 @@ METODOS::= id para id parc llavea llavec {::}
         | id para O parc pyc {::}
         | id para O parc {::};
 
-DECLARACIONES::= DECLARACIONES DECLARACION
-                |DECLARACION;
 
 DECLARACION::= id igual O pyc {::}
+                | vare id igual O  {::}
+                | lete id igual O  {::}
+                | conste id igual O  {::}
                 | vare id igual O pyc {::}
                 | lete id igual O pyc {::}
                 | conste id igual O pyc {::}
@@ -157,7 +158,7 @@ SENTENCIAS::= FORMETOD {::}
         | ELSEMETODE {::};
 
 
-FORMETOD::= fory para DECLARACIONES OPERACIONES OPERACIONES parc llavea INSTRUCCIONES llavec {::};
+FORMETOD::= fory para DECLARACION OPERACIONES OPERACIONES parc llavea INSTRUCCIONES llavec {::};
             
 IFMETOD::= ife para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
 
@@ -167,10 +168,9 @@ MIXELSEMETOD::= ife elsi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
 
 WHILEMETOD::= whi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
 
-DOWHILEMETOD::= du llavea DECLARACIONES llavec whi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
+DOWHILEMETOD::= du llavea DECLARACION llavec whi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
 
 SWITCHMETOD::= swi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
-
 
 ELSEMETODE::= elsi llavea INSTRUCCIONES llavec {::};
             
