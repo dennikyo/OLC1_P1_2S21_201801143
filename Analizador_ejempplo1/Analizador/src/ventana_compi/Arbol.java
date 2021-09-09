@@ -128,7 +128,7 @@ public class Arbol {
     public void reportar() throws IOException {
         
         String file_input_path = "Arbol_Sintactico.dot";
-        String do_path = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
+        String do_path = "C:\\Program Files\\Graphviz\\bin\\dot.exe";
         
         String file_get_path =  "Arbol_Sintactico.jpg" ;
         try {

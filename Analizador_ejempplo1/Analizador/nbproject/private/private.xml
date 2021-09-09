@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/analizadores/analizador_sintactico_js.cup</url>
+            <bookmark id="1">
+                <name/>
+                <line>213</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/generadores/GLexico.java</file>
+            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/analizadores/Sintacticojs.java</file>
             <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/generadores/sope.java</file>
             <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/analizadores/Analizador_sintactico.cup</file>
             <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/analizadores/analizador_sintactico_js.cup</file>
-            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/ventana_compi/interfaz.java</file>
-            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/analizadores/analizador_lexico_javaScript.jflex</file>
+            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/ventana_compi/Nodo.java</file>
+            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/ventana_compi/Evaluar.java</file>
+            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/ventana_compi/Arbol.java</file>
         </group>
     </open-files>
 </project-private>
