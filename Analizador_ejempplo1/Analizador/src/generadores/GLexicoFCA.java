@@ -14,7 +14,7 @@ import java.io.File;
 public class GLexicoFCA {
     public static void main(String[] args) 
     {
-        String path="src/analizadores/A_lexicoFCA.jflex";
+        String path="src/analizadores/ana_lexico.jflex";
         generarLexer(path);
     } 
     
@@ -23,4 +23,5 @@ public class GLexicoFCA {
         File file=new File(path);
         jflex.Main.generate(file);
     } 
+    
 }

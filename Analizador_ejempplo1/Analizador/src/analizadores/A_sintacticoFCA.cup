@@ -31,7 +31,7 @@ action code
 
 //------> declaracion de terminales 
 
-terminal String coma, llava, llavc, para, parc, pyc, gre, comp, cadena;
+terminal String coma, llava, llavc, para, parc, pyc, gre, comp, cadena, dosp, igual, mas, menos, por, div, cora, corc;
 
 //------> declaracion de no terminales
 non terminal INICIO;

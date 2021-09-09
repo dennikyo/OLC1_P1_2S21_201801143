@@ -5,7 +5,9 @@
  */
 package ventana_compi;
 
+import analizadores.Analizador_Lexico_FCA;
 import analizadores.Analizador_lexico_js;
+import analizadores.Sintactico_FCA;
 import analizadores.Sintacticojs;
 import java.io.BufferedReader;
 import java.io.StringReader;
@@ -131,12 +133,15 @@ public class Ventana_1 extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Nodo raiz = null;
         try {
-            Sintacticojs sintactico = new Sintacticojs(new Analizador_lexico_js(new BufferedReader( new StringReader(textArea1.getText()))));
+            Sintactico_FCA sintactico = new Sintactico_FCA(new Analizador_Lexico_FCA(new BufferedReader( new StringReader(textArea1.getText()))));
+            sintactico.parse();
+            
+            /*Sintacticojs sintactico = new Sintacticojs(new Analizador_lexico_js(new BufferedReader( new StringReader(textArea1.getText()))));
             sintactico.parse(); 
 
             raiz = sintactico.getRaiz();
 
-            System.out.println("Todo Correcto ");
+            System.out.println("Todo Correcto ");*/
 
 
 
