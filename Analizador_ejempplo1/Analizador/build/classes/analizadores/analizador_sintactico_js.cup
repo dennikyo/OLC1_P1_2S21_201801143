@@ -2,6 +2,8 @@
 //-------> importaciones, paquetes
 package analizadores;
 import java_cup.runtime.Symbol;
+import ventana_compi.Nodo;
+
 
 
 //------> Codigo para el parser,variables, metodos
@@ -10,7 +12,11 @@ parser code{:
         //Podemos crear variables, listas, etc;
         // deben de ser staticas si se quieren usar fuera
         
+        public static Nodo raiz;
         
+        public Nodo getRaiz(){
+            return raiz;
+        }
         
 
         public void syntax_error(Symbol s)
@@ -37,44 +43,26 @@ terminal String mas, deci,coma, por,id, div, str, menos,dosp,pyc, keis, bre, def
  
 
 //------> declaracion de no terminales
-non terminal INICIO,  INSTRUCCIONES, INSTRUCCION;
-non terminal CLASS;
-non terminal VAR;
-non terminal LET;
-non terminal CONST;
-non terminal IF;
-non terminal ELSE;
-non terminal FOR;
-non terminal WHILE;
-non terminal DO;
-non terminal SWITCH;
-non terminal BREAK;
-non terminal REQUIRE;
-non terminal DECLARACION, DECLARACIONES;
-non terminal OPERACIONES, OPERACION;
-non terminal COMPARACIONES;
-non terminal ASIGNACIONES;
-non terminal O;
-non terminal FUNCION;
-non terminal METODOS;
-non terminal FORMETOD;
-non terminal VARIAS;
-non terminal C;
-non terminal IFMETOD;
-non terminal IFELSEMETOD;
-non terminal WHILEMETOD;
-non terminal MIXELSEMETOD;
-non terminal DOWHILEMETOD;
-non terminal SWITCHMETOD;
-non terminal METODOVACIO;
-non terminal CONTENTFOR;
-non terminal VARIANTES;
-non terminal VALORES;
-non terminal CONTENIDOS;
-non terminal PRUEBA;
-non terminal SENTENCIAS;
-non terminal SIMBILOS;
-non terminal ELSEMETODE;
+non terminal Nodo  INICIO,  INSTRUCCIONES, INSTRUCCION;
+non terminal Nodo DECLARACION, DECLARACIONES;
+non terminal Nodo OPERACIONES, OPERACION;
+non terminal Nodo COMPARACIONES;
+non terminal Nodo ASIGNACIONES;
+non terminal Nodo O;
+non terminal Nodo FUNCION;
+non terminal Nodo METODOS;
+non terminal Nodo FORMETOD;
+non terminal Nodo IFMETOD;
+non terminal Nodo IFELSEMETOD;
+non terminal Nodo WHILEMETOD;
+non terminal Nodo MIXELSEMETOD;
+non terminal Nodo DOWHILEMETOD;
+non terminal Nodo SWITCHMETOD;
+non terminal Nodo METODOVACIO;
+non terminal Nodo CONTENTFOR;
+non terminal Nodo CONTENIDOS;
+non terminal Nodo SENTENCIAS;
+non terminal Nodo ELSEMETODE;
 
 
 
@@ -85,96 +73,457 @@ precedence left mas, menos;
 precedence left por, div;
 
 
-
+                                                            
 start with INICIO;
 
 /*--------------- 3ra Area: Reglas Semanticas -----------------------*/
 
-INICIO::= clase id llavea INSTRUCCIONES llavec:a    {::} 
-       ;
-INSTRUCCIONES::= INSTRUCCIONES:a FUNCION:b            {::}
-       | FUNCION:a                           {::}
-       | INSTRUCCIONES:a SENTENCIAS:b          {::}    
-       | SENTENCIAS:a                           {::}
-       | INSTRUCCIONES:a DECLARACION:b                {::}
-       | DECLARACION:a                                 {::}
-       | INSTRUCCIONES:a OPERACIONES:b      {::}
-       | OPERACIONES:a                      {::}
-       | INSTRUCCIONES:a METODOS:b          {::}
-       | METODOS;
+INICIO::= clase id llavea INSTRUCCIONES:a llavec    {: parser.raiz = a; :};
+INSTRUCCIONES::= INSTRUCCIONES:a FUNCION:b            {:Nodo padre = new Nodo("INSTRUCCIONES","",0,0);
+                                                        padre.AddHijo(a);
+                                                        padre.AddHijo(b); 
+                                                        RESULT = padre;  :}
+                                                        
 
-                   
+       | FUNCION:a                           {: Nodo padre = new Nodo("INSTRUCCIONES","",0,0);
+                                                    padre.AddHijo(a);
+                                                    RESULT = padre; :}
+                                                        
+       | INSTRUCCIONES:a SENTENCIAS:b           {: Nodo padre = new Nodo("INSTRUCCIONES","",0,0);
+                                                    padre.AddHijo(a);
+                                                    padre.AddHijo(b); 
+                                                    RESULT = padre;:}
+    
+       | SENTENCIAS:a                           {: Nodo padre = new Nodo("INSTRUCCIONES","",0,0);
+                                                    padre.AddHijo(a);
+                                                    RESULT = padre; :}
 
-FUNCION::= id para id parc llavea INSTRUCCIONES llavec {::}
-        | consi para id parc pyc {::}
-        | consi para id mas O parc pyc {::}
-        | consi para O mas O mas O mas O parc pyc {::}             
-        | id para parc llavea INSTRUCCIONES llavec{::}
-        | id para parc pyc {::}
-        | id para parc {::} 
-        | id para id coma id coma id coma id parc llavea INSTRUCCIONES llavec{::}
-        | id para id menos O coma id coma id coma id parc pyc {::};
+       | INSTRUCCIONES:a DECLARACION:b          {: Nodo padre = new Nodo("INSTRUCCIONES","",0,0);
+                                                    padre.AddHijo(a);
+                                                    padre.AddHijo(b); 
+                                                    RESULT = padre; :}
+
+       | DECLARACION:a                          {: Nodo padre = new Nodo("INSTRUCCIONES","",0,0);
+                                                    padre.AddHijo(a);
+                                                    RESULT = padre; :}
+
+       | INSTRUCCIONES:a OPERACIONES:b          {: Nodo padre = new Nodo("INSTRUCCIONES","",0,0);
+                                                    padre.AddHijo(a);
+                                                    padre.AddHijo(b); 
+                                                    RESULT = padre; :}
+       | OPERACIONES:a                          {: Nodo padre = new Nodo("INSTRUCCIONES","",0,0);
+                                                    padre.AddHijo(a);
+                                                    RESULT = padre; :}
+
+       | INSTRUCCIONES:a METODOS:b              {: Nodo padre = new Nodo("INSTRUCCIONES","",0,0);
+                                                    padre.AddHijo(a);
+                                                    padre.AddHijo(b); 
+                                                    RESULT = padre; :}
+
+       | METODOS:a                              {: Nodo padre = new Nodo("INSTRUCCIONES","",0,0);
+                                                    padre.AddHijo(a);
+                                                    RESULT = padre; :} ;
+
+                        
+
+FUNCION::= id:a para:b id:c parc:d llavea:e INSTRUCCIONES:f llavec:g {: Nodo padre = new Nodo("FUNCION","",0,0);
+                                                            padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                                            padre.AddHijo(new Nodo("para", b, bright, bleft));
+                                                            padre.AddHijo(new Nodo("id", c, cright, cleft));
+                                                            padre.AddHijo(new Nodo("parc", d, dright, dleft));
+                                                            padre.AddHijo(new Nodo("llavea", e, eright, eleft));
+                                                            padre.AddHijo(f);
+                                                            padre.AddHijo(new Nodo("llavec", g, gright, gleft));
+                                                            RESULT = padre; :}
+        | consi:a para:b id:c parc:d pyc:e {: Nodo padre = new Nodo("FUNCION","",0,0);
+                                                padre.AddHijo(new Nodo("consi", a, aright, aleft));
+                                                padre.AddHijo(new Nodo("para", b, bright, bleft));
+                                                padre.AddHijo(new Nodo("id", c, cright, cleft));
+                                                padre.AddHijo(new Nodo("parc", d, dright, dleft));
+                                                padre.AddHijo(new Nodo("pyc", e, eright, eleft));
+                                                RESULT = padre;
+                                                    :}
+
+        | consi:a para:b id:c mas:d O:e parc:f pyc:g {: Nodo padre = new Nodo("FUNCION","",0,0);
+                                                        padre.AddHijo(new Nodo("consi", a, aright, aleft));  
+                                                        padre.AddHijo(new Nodo("para", b, bright, bleft));
+                                                        padre.AddHijo(new Nodo("id", c, cright, cleft));
+                                                        padre.AddHijo(new Nodo("mas", d, dright, dleft));
+                                                        padre.AddHijo(e);
+                                                        padre.AddHijo(new Nodo("parc", f, fright, fleft));
+                                                        padre.AddHijo(new Nodo("pyc", g, gright, gleft));
+                                                        RESULT = padre;
+                                                                    :}
+
+        | consi:a para:b O:c mas:d O:e mas:f O:g mas:h O:i parc:j pyc:k {: Nodo padre = new Nodo("FUNCION","",0,0);
+                                                                           padre.AddHijo(new Nodo("consi", a, aright, aleft));  
+                                                                           padre.AddHijo(new Nodo("para", b, bright, bleft));
+                                                                           padre.AddHijo(c);
+                                                                           padre.AddHijo(new Nodo("mas", d, dright, dleft));
+                                                                           padre.AddHijo(e);
+                                                                           padre.AddHijo(new Nodo("mas", f, fright, fleft));
+                                                                           padre.AddHijo(g);
+                                                                           padre.AddHijo(new Nodo("mas", h, hright, hleft));
+                                                                           padre.AddHijo(i);
+                                                                           padre.AddHijo(new Nodo("parc", j, jright, jleft));
+                                                                           padre.AddHijo(new Nodo("pyc", k, kright, kleft));
+                                                                           RESULT = padre;
+                                                                            :}             
+        | id:a para:b parc:c llavea:d INSTRUCCIONES:e llavec:f {: Nodo padre = new Nodo("FUNCION","",0,0);
+                                                                    padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                                                    padre.AddHijo(new Nodo("para", b, bright, bleft));
+                                                                    padre.AddHijo(new Nodo("parc", c, cright, cleft));
+                                                                    padre.AddHijo(new Nodo("llavea", d, dright, dleft));
+                                                                    padre.AddHijo(e);
+                                                                    padre.AddHijo(new Nodo("llavec", f, fright, fleft));
+                                                                    RESULT = padre; :}   
+   
+        | id:a para:b parc:c pyc:d {: Nodo padre = new Nodo("FUNCION","",0,0);
+                                padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                padre.AddHijo(new Nodo("para", b, bright, bleft));
+                                padre.AddHijo(new Nodo("parc", c, cright, cleft));
+                                padre.AddHijo(new Nodo("pyc", d, dright, dleft));
+                                RESULT = padre; :}
+
+        | id:a para:b parc:c {: Nodo padre = new Nodo("FUNCION","",0,0);
+                                padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                padre.AddHijo(new Nodo("para", b, bright, bleft));
+                                padre.AddHijo(new Nodo("parc", c, cright, cleft));
+                                RESULT = padre; :}
+                                
+        | id:a para:b id:c coma:d id:e coma:f id:g coma:h id:i parc:j llavea:k INSTRUCCIONES:l llavec:m {: Nodo padre = new Nodo("FUNCION","",0,0);
+                                                                                                            padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                                                                                            padre.AddHijo(new Nodo("parab", b, bright, bleft));
+                                                                                                            padre.AddHijo(new Nodo("id", c, cright, cleft));
+                                                                                                            padre.AddHijo(new Nodo("coma", d, dright, dleft));
+                                                                                                            padre.AddHijo(new Nodo("id", e, eright, eleft));
+                                                                                                            padre.AddHijo(new Nodo("coma", f, fright, fleft));
+                                                                                                            padre.AddHijo(new Nodo("id", g, gright, gleft));
+                                                                                                            padre.AddHijo(new Nodo("coma", h, hright, hleft));
+                                                                                                            padre.AddHijo(new Nodo("id", i, iright, ileft));   
+                                                                                                            padre.AddHijo(new Nodo("parc", j, jright, jleft));
+                                                                                                            padre.AddHijo(new Nodo("llavea", k, kright, kleft));
+                                                                                                            padre.AddHijo(l);
+                                                                                                            padre.AddHijo(new Nodo("llavec", m, mright, mleft));
+                                                                                                            RESULT = padre; :}
+
+        | id:a para:b id:c menos:d O:e coma:f id:g coma:h id:i coma:j id:k parc:l pyc:m {: Nodo padre = new Nodo("FUNCION","",0,0);
+                                                                                            padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                                                                            padre.AddHijo(new Nodo("para", b, bright, bleft));
+                                                                                            padre.AddHijo(new Nodo("id", c, cright, cleft));
+                                                                                            padre.AddHijo(new Nodo("menos", d, dright, dleft));
+                                                                                            padre.AddHijo(e);
+                                                                                            padre.AddHijo(new Nodo("coma", f, fright, fleft));
+                                                                                            padre.AddHijo(new Nodo("id", g, gright, gleft));
+                                                                                            padre.AddHijo(new Nodo("coma", h, hright, hleft));
+                                                                                            padre.AddHijo(new Nodo("id", i, iright, ileft));
+                                                                                            padre.AddHijo(new Nodo("coma", j, jright, jleft));
+                                                                                            padre.AddHijo(new Nodo("id", k, kright, kleft));
+                                                                                            padre.AddHijo(new Nodo("parc", l, lright, lleft));
+                                                                                            padre.AddHijo(new Nodo("pyc", m, mright, mleft));
+                                                                                            RESULT = padre; :};                                                         
 
             
-O::= deci {::}
-    |cadena {::}
-    |digito{::}
-    |id {::};
+O::= deci:a {: Nodo padre = new Nodo("O","",0,0);
+            padre.AddHijo(new Nodo("deci", a, aright, aleft)); 
+            RESULT = padre; :}
+    |cadena:a {: Nodo padre = new Nodo("O","",0,0); 
+                padre.AddHijo(new Nodo("cadena", a, aright, aleft));
+                RESULT = padre; :}
+    |digito:a {: Nodo padre = new Nodo("O","",0,0); 
+                padre.AddHijo(new Nodo("digito", a, aright, aleft));
+                RESULT = padre; :}
+    |id:a {:    Nodo padre = new Nodo("O","",0,0);
+                padre.AddHijo(new Nodo("id", a, aright, aleft));
+                RESULT = padre; :};
 
 /*METODOS::= 
         | id para O parc pyc {::}
         | id para O parc  */
 
 
-DECLARACION::= id igual O pyc {::}
-                | vare id igual O  {::}
-                | lete id igual O  {::}
-                | conste id igual O  {::}
-                | vare id igual O pyc {::}
-                | lete id igual O pyc {::}
-                | conste id igual O pyc {::}
-                | lete id igual id mas id pyc {::}
-                | id igual id por id pyc {::};
+DECLARACION::= id:a igual:b O:c pyc:d {: Nodo padre = new Nodo("DECLARACION","",0,0);
+                                    padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                    padre.AddHijo(new Nodo("igual", b, bright, bleft));
+                                    padre.AddHijo(c);
+                                    padre.AddHijo(new Nodo("pyc", d, dright, dleft));
+                                    RESULT = padre; :}
+
+                | vare:a id:b igual:c O:d  {: Nodo padre = new Nodo("DECLARACION","",0,0);
+                                                padre.AddHijo(new Nodo("vare", a, aright, aleft));
+                                                padre.AddHijo(new Nodo("id", b, bright, bleft));
+                                                padre.AddHijo(new Nodo("igual", c, cright, cleft));
+                                                padre.AddHijo(d);
+                                                RESULT = padre; :}
+
+                | lete:a id:b igual:c O:d  {: Nodo padre = new Nodo("DECLARACION","",0,0);
+                                        padre.AddHijo(new Nodo("lete", a, aright, aleft));
+                                        padre.AddHijo(new Nodo("id", b, bright, bleft));
+                                        padre.AddHijo(new Nodo("igual", c, cright, cleft));
+                                        padre.AddHijo(d);
+                                        RESULT = padre;
+                                        :}
+
+                | conste:a id:b igual:c O:d  {: Nodo padre = new Nodo("DECLARACION","",0,0);
+                                        padre.AddHijo(new Nodo("conste", a, aright, aleft));
+                                        padre.AddHijo(new Nodo("id", b, bright, bleft));
+                                        padre.AddHijo(new Nodo("igual", c, cright, cleft));
+                                        padre.AddHijo(d); 
+                                        RESULT = padre; :}
+
+                | vare:a id:b igual:c O:d pyc:e {: Nodo padre = new Nodo("DECLARACION","",0,0);
+                                                    padre.AddHijo(new Nodo("vare", a, aright, aleft));
+                                                    padre.AddHijo(new Nodo("id", b, bright, bleft));
+                                                    padre.AddHijo(new Nodo("igual", c, cright, cleft));
+                                                    padre.AddHijo(d);
+                                                    padre.AddHijo(new Nodo("pyc", e, eright, eleft));
+                                                    RESULT = padre; 
+                                                    :}
+
+                | lete:a id:b igual:c O:d pyc:e {: Nodo padre = new Nodo("DECLARACION","",0,0);
+                                            padre.AddHijo(new Nodo("lete", a, aright, aleft));
+                                            padre.AddHijo(new Nodo("id", b, bright, bleft));
+                                            padre.AddHijo(new Nodo("igual", c, cright, cleft));
+                                            padre.AddHijo(d);;
+                                            padre.AddHijo(new Nodo("pyc", e, eright, eleft));
+                                            RESULT = padre; :}
+
+                | conste:a id:b igual:c O:d pyc:e {: Nodo padre = new Nodo("DECLARACION","",0,0);
+                                                    padre.AddHijo(new Nodo("conste", a, aright, aleft));
+                                                    padre.AddHijo(new Nodo("id", b, bright, bleft));
+                                                    padre.AddHijo(new Nodo("igual", c, cright, cleft));
+                                                    padre.AddHijo(d);
+                                                    padre.AddHijo(new Nodo("pyc", e, eright, eleft));
+                                                    RESULT = padre;
+                                                     :}
+                | lete:a id:b igual:c id:d mas:e id:f pyc:g {: Nodo padre = new Nodo("DECLARACION","",0,0);
+                                                                padre.AddHijo(new Nodo("lete", a, aright, aleft));
+                                                                padre.AddHijo(new Nodo("id", b, bright, bleft));
+                                                                padre.AddHijo(new Nodo("igual", c, cright, cleft));
+                                                                padre.AddHijo(new Nodo("id", d, dright, dleft));
+                                                                padre.AddHijo(new Nodo("mas", e, eright, eleft));
+                                                                padre.AddHijo(new Nodo("id", f, fright, fleft));
+                                                                padre.AddHijo(new Nodo("pyc", g, gright, gleft));
+                                                                RESULT = padre;
+                                                                            :}
+                | id:a igual:b id:c por:d id:e pyc:f {: Nodo padre = new Nodo("DECLARACION","",0,0);
+                                                        padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                                        padre.AddHijo(new Nodo("igual", b, bright, bleft));
+                                                        padre.AddHijo(new Nodo("id", c, cright, cleft));
+                                                        padre.AddHijo(new Nodo("por", d, dright, dleft));
+                                                        padre.AddHijo(new Nodo("id", e, eright, eleft));
+                                                        padre.AddHijo(new Nodo("pyc", f, fright, fleft));
+                                                        RESULT = padre;
+                                                                :};
                 
 
 
-OPERACIONES::= id menos menos {::}
-            | id mas mas {::}
-            | id mas mas pyc {::}
-            | id id {::}
-            | id mayig O pyc {::}
-            | id igual id mas O pyc {::}
-            | id igual id mas O {::}
-            | id mayig O and id menig O {::}
-            | id menig O pyc {::}
-            | id menig O {::}
-            | id iguall O {::}
-            | id menor O pyc {::}
-            | id mayor O pyc {::};
+OPERACIONES::= id:a menos:b menos:c {: Nodo padre = new Nodo("OPERACIONES","",0,0);
+                                        padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                        padre.AddHijo(new Nodo("menos", b, bright, bleft));
+                                        padre.AddHijo(new Nodo("menos", c, cright, cleft));
+                                        RESULT = padre; :}
+
+            | id:a mas:b mas:c {:Nodo padre = new Nodo("OPERACIONES","",0,0);
+                                    padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                    padre.AddHijo(new Nodo("mas", b, bright, bleft));
+                                    padre.AddHijo(new Nodo("mas", c, cright, cleft));
+                                    RESULT = padre; :}
+
+            | id:a mas:b mas:c pyc:d {: Nodo padre = new Nodo("OPERACIONES","",0,0);
+                                    padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                    padre.AddHijo(new Nodo("mas", b, bright, bleft));
+                                    padre.AddHijo(new Nodo("mas", c, cright, cleft));
+                                    padre.AddHijo(new Nodo("pyc", d, dright, dleft));
+                                    RESULT = padre; :}
+
+            | id:a id:b {: Nodo padre = new Nodo("OPERACIONES","",0,0);
+                                padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                padre.AddHijo(new Nodo("id", b, bright, bleft));
+                                RESULT = padre; :}
+            | id:a mayig:b O:c pyc:d {: Nodo padre = new Nodo("OPERACIONES","",0,0);
+                                padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                padre.AddHijo(new Nodo("mayig", b, bright, bleft));
+                                padre.AddHijo(c);
+                                padre.AddHijo(new Nodo("pyc", d, dright, dleft));
+                                RESULT = padre; :}
+
+            | id:a igual:b id:c mas:d O:e pyc:f {: Nodo padre = new Nodo("OPERACIONES","",0,0);
+                                padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                padre.AddHijo(new Nodo("igual", b, bright, bleft));
+                                padre.AddHijo(new Nodo("id", c, cright, cleft));
+                                padre.AddHijo(new Nodo("mas", d, dright, dleft));
+                                padre.AddHijo(e);
+                                padre.AddHijo(new Nodo("pyc", f, fright, fleft));
+                                RESULT = padre; :}
+
+            | id:a igual:b id:c mas:d O:e {: Nodo padre = new Nodo("OPERACIONES","",0,0);
+                                padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                padre.AddHijo(new Nodo("igual", b, bright, bleft));
+                                padre.AddHijo(new Nodo("id", c, cright, cleft));
+                                padre.AddHijo(new Nodo("mas", d, dright, dleft));
+                                padre.AddHijo(e);
+                                RESULT = padre; :}
+
+            | id:a mayig:b O:c and:d id:e menig:f O:g {: Nodo padre = new Nodo("OPERACIONES","",0,0);
+                                                        padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                                        padre.AddHijo(new Nodo("mayig", b, bright, bleft));
+                                                        padre.AddHijo(c);
+                                                        padre.AddHijo(new Nodo("and", d, dright, dleft));
+                                                        padre.AddHijo(new Nodo("id", e, eright, eleft));
+                                                        padre.AddHijo(new Nodo("menig", f, fright, fleft));
+                                                        padre.AddHijo(g);
+                                                        RESULT = padre; :}
+
+            | id:a menig:b O:c pyc:d {: Nodo padre = new Nodo("OPERACIONES","",0,0);
+                                            padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                            padre.AddHijo(new Nodo("menig", b, bright, bleft));
+                                            padre.AddHijo(c);
+                                            padre.AddHijo(new Nodo("pyc", d, dright, dleft));
+                                            RESULT = padre; :}
+            | id:a menig:b O:c {: Nodo padre = new Nodo("OPERACIONES","",0,0);
+                                            padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                            padre.AddHijo(new Nodo("menig", b, bright, bleft));
+                                            padre.AddHijo(c);
+                                            RESULT = padre; :}
+
+            | id:a iguall:b O:c {: Nodo padre = new Nodo("OPERACIONES","",0,0);
+                                        padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                        padre.AddHijo(new Nodo("iguall", b, bright, bleft));
+                                        padre.AddHijo(c);
+                                        RESULT = padre; :}
+
+            | id:a menor:b O:c pyc:d {: Nodo padre = new Nodo("OPERACIONES","",0,0);
+                                        padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                        padre.AddHijo(new Nodo("menor", b, bright, bleft));
+                                        padre.AddHijo(c);
+                                        padre.AddHijo(new Nodo("pyc", d, dright, dleft));
+                                        RESULT = padre; :}
+
+            | id:a mayor:b O:c pyc:d {: Nodo padre = new Nodo("OPERACIONES","",0,0);
+                                    padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                    padre.AddHijo(new Nodo("mayor", b, bright, bleft));
+                                    padre.AddHijo(c);
+                                    padre.AddHijo(new Nodo("pyc", d, dright, dleft));
+                                    RESULT = padre; :};
            
-SENTENCIAS::= FORMETOD {::}
-        | IFMETOD {::}
-        | IFELSEMETOD {::}
-        | WHILEMETOD {::}
-        | MIXELSEMETOD {::}
-        | DOWHILEMETOD{::}
-        | SWITCHMETOD {::}
-        | ELSEMETODE {::};
+SENTENCIAS::= FORMETOD:a {: Nodo padre = new Nodo("SENTENCIAS","",0,0);
+                            padre.AddHijo(a);
+                            RESULT = padre; :}
+        | IFMETOD:a {: Nodo padre = new Nodo("SENTENCIAS","",0,0);
+                            padre.AddHijo(a);
+                            RESULT = padre; :}
+        | IFELSEMETOD:a {: Nodo padre = new Nodo("SENTENCIAS","",0,0);
+                            padre.AddHijo(a);
+                            RESULT = padre; :}
+        | WHILEMETOD:a {: Nodo padre = new Nodo("SENTENCIAS","",0,0);
+                            padre.AddHijo(a);
+                            RESULT = padre; :}
+        | MIXELSEMETOD:a {: Nodo padre = new Nodo("SENTENCIAS","",0,0);
+                            padre.AddHijo(a);
+                            RESULT = padre; :}
+        | DOWHILEMETOD:a {: Nodo padre = new Nodo("SENTENCIAS","",0,0);
+                            padre.AddHijo(a);
+                            RESULT = padre; :}
+        | SWITCHMETOD:a {: Nodo padre = new Nodo("SENTENCIAS","",0,0);
+                            padre.AddHijo(a);
+                            RESULT = padre; :}
+        | ELSEMETODE:a {: Nodo padre = new Nodo("SENTENCIAS","",0,0);
+                            padre.AddHijo(a);
+                            RESULT = padre; :};
 
 
-FORMETOD::= fory para DECLARACION OPERACIONES OPERACIONES parc llavea INSTRUCCIONES llavec {::};
+FORMETOD::= fory:a para:b DECLARACION:c OPERACIONES:d OPERACIONES:e parc:f llavea:g INSTRUCCIONES:h llavec:i {: Nodo padre = new Nodo("FORMETOD","",0,0);
+                                                                                    padre.AddHijo(new Nodo("fory", a, aright, aleft));
+                                                                                    padre.AddHijo(new Nodo("para", b, bright, bleft));
+                                                                                    padre.AddHijo(c);
+                                                                                    padre.AddHijo(d);
+                                                                                    padre.AddHijo(e);
+                                                                                    padre.AddHijo(new Nodo("parc", f, fright, fleft));
+                                                                                    padre.AddHijo(new Nodo("llavea", g, gright, gleft));
+                                                                                    padre.AddHijo(h);
+                                                                                    padre.AddHijo(new Nodo("llavec", i, iright, ileft));
+                                                                                    RESULT = padre;                                                                                  
+:};
             
-IFMETOD::= ife para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
+IFMETOD::= ife:a para:b OPERACIONES:c parc:d llavea:e INSTRUCCIONES:f llavec:g {: Nodo padre = new Nodo("IFMETOD","",0,0);   
+                                                                                    padre.AddHijo(new Nodo("ife", a, aright, aleft));
+                                                                                    padre.AddHijo(new Nodo("para", b, bright, bleft));
+                                                                                    padre.AddHijo(c);
+                                                                                    padre.AddHijo(new Nodo("parc", d, dright, dleft));
+                                                                                    padre.AddHijo(new Nodo("llavea", e, eright, eleft));
+                                                                                    padre.AddHijo(f);
+                                                                                    padre.AddHijo(new Nodo("llavec", g, gright, gleft));
+                                                                                    RESULT = padre;
+:};
 
-IFELSEMETOD::= ife para OPERACIONES parc llavea llavec elsi llavea INSTRUCCIONES llavec {::};
+IFELSEMETOD::= ife:a para:b OPERACIONES:c parc:d llavea:e llavec:f elsi:g llavea:h INSTRUCCIONES:i llavec:j {: Nodo padre = new Nodo("IFELSEMETOD","",0,0);
+                                                                                    padre.AddHijo(new Nodo("ife", a, aright, aleft));
+                                                                                    padre.AddHijo(new Nodo("para", b, bright, bleft));
+                                                                                    padre.AddHijo(c);
+                                                                                    padre.AddHijo(new Nodo("parc", d, dright, dleft));
+                                                                                    padre.AddHijo(new Nodo("llavea", e, eright, eleft));
+                                                                                    padre.AddHijo(new Nodo("llavec", f, gright, fleft));
+                                                                                    padre.AddHijo(new Nodo("elsi", g, hright, gleft));
+                                                                                    padre.AddHijo(new Nodo("llavea", h, hright, hleft));
+                                                                                    padre.AddHijo(i);
+                                                                                    padre.AddHijo(new Nodo("llavec", j, jright, jleft));
+                                                                                    RESULT = padre;
+:};
 
-MIXELSEMETOD::= ife elsi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
+MIXELSEMETOD::= ife:a elsi:b para:c OPERACIONES:d parc:e llavea:f INSTRUCCIONES:g llavec:h {: Nodo padre = new Nodo("MIXELSEMETOD","",0,0);
+                                                                                            padre.AddHijo(new Nodo("ife", a, aright, aleft));
+                                                                                            padre.AddHijo(new Nodo("elsi", b, bright, bleft));
+                                                                                            padre.AddHijo(new Nodo("para", c, cright, cleft));
+                                                                                            padre.AddHijo(d);
+                                                                                            padre.AddHijo(new Nodo("parc", e, eright, eleft));
+                                                                                            padre.AddHijo(new Nodo("llavea", f, fright, fleft));
+                                                                                            padre.AddHijo(g);
+                                                                                            padre.AddHijo(new Nodo("llavec", h, hright, hleft));
+                                                                                            RESULT = padre;
+                                                                                            :};
 
-WHILEMETOD::= whi para OPERACIONES parc llavea INSTRUCCIONES llavec {::};
 
-DOWHILEMETOD::= du llavea DECLARACION OPERACIONES llavec whi para OPERACIONES parc pyc {::};
+WHILEMETOD::= whi:a para:b OPERACIONES:c parc:d llavea:e INSTRUCCIONES:f llavec:g {: Nodo padre = new Nodo("WHILEMETOD","",0,0);
+                                                                                    padre.AddHijo(new Nodo("whi", a, aright, aleft));
+                                                                                    padre.AddHijo(new Nodo("para", b, bright, bleft));
+                                                                                    padre.AddHijo(c);
+                                                                                    padre.AddHijo(new Nodo("parc", d, dright, dleft));
+                                                                                    padre.AddHijo(new Nodo("llavea", e, eright, eleft));
+                                                                                    padre.AddHijo(f);
+                                                                                    padre.AddHijo(new Nodo("llavec", g, gright, gleft));
+                                                                                    RESULT = padre;
+                                                                                    :};
 
-SWITCHMETOD::= swi para OPERACIONES  parc llavea INSTRUCCIONES llavec {::};
+DOWHILEMETOD::= du:a llavea:b DECLARACION:c OPERACIONES:d llavec:e whi:f para:g OPERACIONES:h parc:i pyc:j {: Nodo padre = new Nodo("DOWHILEMETOD","",0,0);
+                                                                                                            padre.AddHijo(new Nodo("du", a, aright, aleft));
+                                                                                                            padre.AddHijo(new Nodo("llavea", b, bright, bleft));
+                                                                                                            padre.AddHijo(c);
+                                                                                                            padre.AddHijo(d);
+                                                                                                            padre.AddHijo(new Nodo("llavec", e, eright, eleft));
+                                                                                                            padre.AddHijo(new Nodo("whi", f, fright, fleft));
+                                                                                                            padre.AddHijo(new Nodo("para", g, gright, gleft));
+                                                                                                            padre.AddHijo(h);
+                                                                                                            padre.AddHijo(new Nodo("parc", i, iright, ileft));
+                                                                                                            padre.AddHijo(new Nodo("pyc", j, jright, jleft));
+                                                                                                            RESULT = padre;
+:}; 
 
-ELSEMETODE::= elsi llavea INSTRUCCIONES llavec {::};
+SWITCHMETOD::= swi:a para:b OPERACIONES:c  parc:d llavea:e INSTRUCCIONES:f llavec:g {:  Nodo padre = new Nodo("SWITCHMETOD","",0,0);
+                                                                                    padre.AddHijo(new Nodo("swi", a, aright, aleft));
+                                                                                    padre.AddHijo(new Nodo("para", b, bright, bleft));     
+                                                                                    padre.AddHijo(c);
+                                                                                    padre.AddHijo(new Nodo("parc", d, dright, dleft));
+                                                                                    padre.AddHijo(new Nodo("llavea", e, eright, eleft));
+                                                                                    padre.AddHijo(f);
+                                                                                    padre.AddHijo(new Nodo("llavec",g , gright, gleft));
+                                                                                    RESULT = padre;
+                                                                                    :};
+ELSEMETODE::= elsi:a  llavea:b INSTRUCCIONES:c llavec:d {: Nodo padre = new Nodo("ELSEMETODE","",0,0);
+                                                padre.AddHijo(c);
+                                                padre.AddHijo(new Nodo("elsi", a, aright, aleft));
+                                                padre.AddHijo(new Nodo("llavea", b, bright, bleft));
+                                                padre.AddHijo(new Nodo("llavec", d, dright, dleft));
+                                                RESULT = padre;
+                                                :};
             

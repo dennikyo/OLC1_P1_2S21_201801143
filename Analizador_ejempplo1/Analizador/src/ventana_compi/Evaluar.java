@@ -7,7 +7,7 @@ package ventana_compi;
 
 /**
  *
- * @author 50235
+ * @author Denisse :V
  */
 public class Evaluar {
     private int valor, linea, colum;
