@@ -62,7 +62,7 @@ non terminal Nodo METODOVACIO;
 non terminal Nodo CONTENTFOR;
 non terminal Nodo CONTENIDOS;
 non terminal Nodo SENTENCIAS;
-non terminal Nodo ELSEMETODE;
+non terminal Nodo ELSEMETODE, CLASE;
 
 
 
@@ -78,7 +78,20 @@ start with INICIO;
 
 /*--------------- 3ra Area: Reglas Semanticas -----------------------*/
 
-INICIO::= clase id llavea INSTRUCCIONES:a llavec    {: parser.raiz = a; :};
+INICIO::= CLASE:a   {: parser.raiz = a; :};
+
+CLASE::= clase id:a llavea:b INSTRUCCIONES:c llavec:g  {:
+                                                    Nodo superpadre = new Nodo("CLASE","",0,0);
+                                                    Nodo padre = new Nodo("CLASE","",0,0);
+                                                        padre.AddHijo(new Nodo("id", a, aright, aleft));
+                                                        padre.AddHijo(new Nodo("llavea", b, bright, bleft));
+                                                        padre.AddHijo(c); 
+                                                        padre.AddHijo(new Nodo("llavec", g, gright, gleft));
+                                                        superpadre.AddHijo(padre);
+                                                        RESULT = superpadre;
+                                                :}
+                                                 ;
+
 INSTRUCCIONES::= INSTRUCCIONES:a FUNCION:b            {:Nodo padre = new Nodo("INSTRUCCIONES","",0,0);
                                                         padre.AddHijo(a);
                                                         padre.AddHijo(b); 
@@ -124,7 +137,6 @@ INSTRUCCIONES::= INSTRUCCIONES:a FUNCION:b            {:Nodo padre = new Nodo("I
                                                     padre.AddHijo(a);
                                                     RESULT = padre; :} ;
 
-                        
 
 FUNCION::= id:a para:b id:c parc:d llavea:e INSTRUCCIONES:f llavec:g {: Nodo padre = new Nodo("FUNCION","",0,0);
                                                             padre.AddHijo(new Nodo("id", a, aright, aleft));

@@ -32,6 +32,13 @@ id                  = [A-z0-9]+("_"|[A-z]|[0-9])*
 decimal             = [0-9]+("."[0-9]*)
 digito              = [0-9]+([.][0-9]+)?
 
+//Comentarios
+
+LineTerminator = \r|\n|\r\n
+InputCharacter = [^\r\n]
+
+comentariosimple    = "//" {InputCharacter}* {LineTerminator}?
+comentarioMulti     =  "/*" [^/] ~"*/"
 
 //------> Estados
 
@@ -100,6 +107,8 @@ digito              = [0-9]+([.][0-9]+)?
 {digito}    { System.out.println("Reconocio "+yytext()+" digito"); return new Symbol(Simbolosjs.digito, yycolumn, yyline, yytext()); }
 
 //------> Espacios
+{comentariosimple}      {System.out.println("Comentario Simple: "+yytext()); }
+{comentarioMulti}       {System.out.println("Comentario Multiple: "+yytext()); }
 [ \t\r\n\f]             {/* Espacios en blanco, se ignoran */}
 
 //-------> Errores Lexicos 

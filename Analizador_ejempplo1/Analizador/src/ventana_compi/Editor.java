@@ -7,8 +7,10 @@ package ventana_compi;
 
 import analizadores.Analizador_Lexico_FCA;
 import analizadores.Analizador_lexico;
+import analizadores.Analizador_lexico_js;
 import analizadores.Sintactico;
 import analizadores.Sintactico_FCA;
+import analizadores.Sintacticojs;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -108,7 +110,7 @@ public class Editor {
                             System.out.println("----------- " + nombre_archivo1 + " en PROYECTO 1 ----------- ");
                             Nodo raiz = null;
                             //Mandamos a analizar el archivo del proyecto 1 
-                            Sintactico parse = new Sintactico(new Analizador_lexico(new BufferedReader(fr)));
+                            Sintacticojs parse = new Sintacticojs(new Analizador_lexico_js(new BufferedReader(fr)));
                             parse.parse();
 
                             raiz = parse.getRaiz();
@@ -116,7 +118,7 @@ public class Editor {
                                 System.out.println("No se genero bien el arbol");
                             }else{
                                 
-                                nuevo_archivo1 = new Archivo(nombre_archivo1, new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
+                                nuevo_archivo1 = new Archivo(nombre_archivo1, new LinkedList<>(), new LinkedList<>(), new LinkedList<>(),new LinkedList<>());
                                 //--> vamos a guardar las variables encontradas en el archivo
                                 analizar_entrada(raiz,nuevo_archivo1.variables ); 
                                 //-->agregamos los comentarios encontrados (la lista se lleno en el archivo A_Lexico_FCA.jflex)
@@ -149,7 +151,7 @@ public class Editor {
                             System.out.println("----------- " + nombre_archivo2 + " en PROYECTO 2----------- ");
                             Nodo raiz = null;
                             //Mandamos a analizar el archivo del proyecto 2
-                            Sintactico parse = new Sintactico(new Analizador_lexico(new BufferedReader(fr2)));
+                            Sintacticojs parse = new Sintacticojs(new Analizador_lexico_js(new BufferedReader(fr2)));
                             parse.parse();
 
                             raiz = parse.getRaiz();
@@ -157,7 +159,7 @@ public class Editor {
                                 System.out.println("No se genero bien el arbol");
                             }else{
                                 
-                                nuevo_archivo2 = new Archivo(nombre_archivo2, new LinkedList<>(), new LinkedList<>(),new LinkedList<>());
+                                nuevo_archivo2 = new Archivo(nombre_archivo2, new LinkedList<>(), new LinkedList<>(),new LinkedList<>(), new LinkedList<>());
                                 //--> vamos a guardar las variables encontradas en el archivo
                                 analizar_entrada(raiz, nuevo_archivo2.variables); 
                                 //-->agregamos los comentarios encontrados (la lista se lleno en el archivo A_Lexico_FCA.jflex)
@@ -348,7 +350,7 @@ public class Editor {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
@@ -493,7 +495,7 @@ public class Editor {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Editor().setVisible(true);
+               // new Editor().setVisible(true);
             }
         });
     }
