@@ -13,7 +13,7 @@ import java.io.File;
 public class GLexico {
     public static void main(String[] args)
     {
-        String path="src/analizadores/ana_lexico.jflex";
+        String path="src/analizadores/A_lexicoFCA.jflex";
         generarLexer(path);
     }
     public static void generarLexer(String path)

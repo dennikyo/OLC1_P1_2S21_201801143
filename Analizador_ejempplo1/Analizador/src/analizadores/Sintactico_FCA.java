@@ -8,6 +8,10 @@ package analizadores;
 import java_cup.runtime.Symbol;
 import ventana_compi.Comparar;
 import java.util.LinkedList;
+import Reportes.Grafica_Barras;
+import Reportes.Caracteristica;
+import Reportes.Variables;
+import Reportes.Valor;
 import java_cup.runtime.XMLElement;
 
 /** CUP v0.11b 20160615 (GIT 4ac7450) generated parser.
@@ -33,9 +37,15 @@ public class Sintactico_FCA extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\006\000\002\002\004\000\002\002\006\000\002\003" +
-    "\004\000\002\003\003\000\002\004\003\000\002\005\011" +
-    "" });
+    "\000\034\000\002\002\004\000\002\002\006\000\002\003" +
+    "\004\000\002\003\003\000\002\004\003\000\002\004\003" +
+    "\000\002\004\003\000\002\005\011\000\002\006\006\000" +
+    "\002\010\004\000\002\010\003\000\002\007\006\000\002" +
+    "\007\010\000\002\007\010\000\002\007\006\000\002\007" +
+    "\006\000\002\012\003\000\002\012\003\000\002\012\003" +
+    "\000\002\012\003\000\002\012\014\000\002\011\005\000" +
+    "\002\011\003\000\002\013\006\000\002\014\010\000\002" +
+    "\014\010\000\002\014\007\000\002\014\007" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -43,15 +53,69 @@ public class Sintactico_FCA extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\021\000\004\012\004\001\002\000\004\005\007\001" +
+    "\000\132\000\004\012\004\001\002\000\004\005\007\001" +
     "\002\000\004\002\006\001\002\000\004\002\001\001\002" +
-    "\000\004\013\011\001\002\000\006\006\ufffd\013\ufffd\001" +
-    "\002\000\004\007\016\001\002\000\006\006\ufffe\013\ufffe" +
-    "\001\002\000\006\006\015\013\011\001\002\000\006\006" +
-    "\uffff\013\uffff\001\002\000\004\002\000\001\002\000\004" +
-    "\014\017\001\002\000\004\004\020\001\002\000\004\014" +
-    "\021\001\002\000\004\010\022\001\002\000\004\011\023" +
-    "\001\002\000\006\006\ufffc\013\ufffc\001\002" });
+    "\000\010\013\011\030\017\032\016\001\002\000\012\006" +
+    "\ufffd\013\ufffd\030\ufffd\032\ufffd\001\002\000\004\007\127" +
+    "\001\002\000\012\006\ufffe\013\ufffe\030\ufffe\032\ufffe\001" +
+    "\002\000\012\006\ufffb\013\ufffb\030\ufffb\032\ufffb\001\002" +
+    "\000\012\006\125\013\011\030\017\032\016\001\002\000" +
+    "\012\006\ufffc\013\ufffc\030\ufffc\032\ufffc\001\002\000\004" +
+    "\005\065\001\002\000\004\005\020\001\002\000\006\044" +
+    "\021\045\023\001\002\000\004\042\061\001\002\000\010" +
+    "\006\047\044\046\045\050\001\002\000\004\042\024\001" +
+    "\002\000\004\016\025\001\002\000\014\014\030\017\026" +
+    "\027\027\042\033\043\032\001\002\000\010\004\ufff0\011" +
+    "\ufff0\025\ufff0\001\002\000\004\005\035\001\002\000\010" +
+    "\004\uffee\011\uffee\025\uffee\001\002\000\004\011\034\001" +
+    "\002\000\010\004\ufff1\011\ufff1\025\ufff1\001\002\000\010" +
+    "\004\uffef\011\uffef\025\uffef\001\002\000\010\006\uffe6\044" +
+    "\uffe6\045\uffe6\001\002\000\004\026\036\001\002\000\004" +
+    "\004\037\001\002\000\004\014\040\001\002\000\004\004" +
+    "\041\001\002\000\004\014\042\001\002\000\004\004\043" +
+    "\001\002\000\004\014\044\001\002\000\004\006\045\001" +
+    "\002\000\010\004\uffed\011\uffed\025\uffed\001\002\000\004" +
+    "\042\055\001\002\000\012\006\uffea\013\uffea\030\uffea\032" +
+    "\uffea\001\002\000\004\042\051\001\002\000\004\016\052" +
+    "\001\002\000\014\014\030\017\026\027\027\042\033\043" +
+    "\032\001\002\000\004\011\054\001\002\000\010\006\uffe8" +
+    "\044\uffe8\045\uffe8\001\002\000\004\016\056\001\002\000" +
+    "\014\014\030\017\026\027\027\042\033\043\032\001\002" +
+    "\000\004\011\060\001\002\000\010\006\uffe9\044\uffe9\045" +
+    "\uffe9\001\002\000\004\016\062\001\002\000\014\014\030" +
+    "\017\026\027\027\042\033\043\032\001\002\000\004\011" +
+    "\064\001\002\000\010\006\uffe7\044\uffe7\045\uffe7\001\002" +
+    "\000\014\033\070\034\073\035\074\036\071\037\067\001" +
+    "\002\000\016\006\ufff7\033\ufff7\034\ufff7\035\ufff7\036\ufff7" +
+    "\037\ufff7\001\002\000\004\015\122\001\002\000\004\015" +
+    "\117\001\002\000\004\015\114\001\002\000\016\006\113" +
+    "\033\070\034\073\035\074\036\071\037\067\001\002\000" +
+    "\004\015\105\001\002\000\004\015\075\001\002\000\004" +
+    "\024\076\001\002\000\014\014\030\017\026\027\027\042" +
+    "\033\043\032\001\002\000\006\004\102\025\101\001\002" +
+    "\000\006\004\uffeb\025\uffeb\001\002\000\004\011\104\001" +
+    "\002\000\014\014\030\017\026\027\027\042\033\043\032" +
+    "\001\002\000\006\004\uffec\025\uffec\001\002\000\016\006" +
+    "\ufff4\033\ufff4\034\ufff4\035\ufff4\036\ufff4\037\ufff4\001\002" +
+    "\000\004\024\106\001\002\000\014\014\030\017\026\027" +
+    "\027\042\033\043\032\001\002\000\006\004\102\025\110" +
+    "\001\002\000\004\011\111\001\002\000\016\006\ufff5\033" +
+    "\ufff5\034\ufff5\035\ufff5\036\ufff5\037\ufff5\001\002\000\016" +
+    "\006\ufff8\033\ufff8\034\ufff8\035\ufff8\036\ufff8\037\ufff8\001" +
+    "\002\000\012\006\ufff9\013\ufff9\030\ufff9\032\ufff9\001\002" +
+    "\000\014\014\030\017\026\027\027\042\033\043\032\001" +
+    "\002\000\004\011\116\001\002\000\016\006\ufff3\033\ufff3" +
+    "\034\ufff3\035\ufff3\036\ufff3\037\ufff3\001\002\000\014\014" +
+    "\030\017\026\027\027\042\033\043\032\001\002\000\004" +
+    "\011\121\001\002\000\016\006\ufff6\033\ufff6\034\ufff6\035" +
+    "\ufff6\036\ufff6\037\ufff6\001\002\000\014\014\030\017\026" +
+    "\027\027\042\033\043\032\001\002\000\004\011\124\001" +
+    "\002\000\016\006\ufff2\033\ufff2\034\ufff2\035\ufff2\036\ufff2" +
+    "\037\ufff2\001\002\000\004\002\000\001\002\000\012\006" +
+    "\uffff\013\uffff\030\uffff\032\uffff\001\002\000\004\014\130" +
+    "\001\002\000\004\004\131\001\002\000\004\014\132\001" +
+    "\002\000\004\010\133\001\002\000\004\011\134\001\002" +
+    "\000\012\006\ufffa\013\ufffa\030\ufffa\032\ufffa\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -59,13 +123,38 @@ public class Sintactico_FCA extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\021\000\004\002\004\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\010\003\012\004\011" +
-    "\005\007\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\006\004\013\005\007\001\001\000\002" +
+    "\000\132\000\004\002\004\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\014\003\013\004\011" +
+    "\005\007\006\014\013\012\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\012" +
+    "\004\125\005\007\006\014\013\012\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\004\014\021" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\004\012\030\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001" });
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\004\012\052\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\004\012\056\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\004\012" +
+    "\062\001\001\000\002\001\001\000\002\001\001\000\006" +
+    "\007\065\010\071\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\004\007\111" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\006\011\076\012\077\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\004\012\102\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\006\011\106\012\077\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\004\012\114\001\001\000\002\001\001\000" +
+    "\002\001\001\000\004\012\117\001\001\000\002\001\001" +
+    "\000\002\001\001\000\004\012\122\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -161,7 +250,7 @@ class CUP$Sintactico_FCA$actions {
           return CUP$Sintactico_FCA$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 1: // INICIO ::= gre llava INSTRUCCIONES llavc 
+          case 1: // INICIO ::= gre llavea INSTRUCCIONES llavec 
             {
               Object RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).left;
@@ -212,7 +301,31 @@ class CUP$Sintactico_FCA$actions {
           return CUP$Sintactico_FCA$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 5: // COMPARE ::= comp para cadena coma cadena parc pyc 
+          case 5: // INSTRUCCION ::= GRAFICA_BARRAS 
+            {
+              Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).right;
+		Grafica_Barras a = (Grafica_Barras)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.peek()).value;
+		 RESULT = a; 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",2, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 6: // INSTRUCCION ::= DEF_GLOBALES 
+            {
+              Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).right;
+		LinkedList<Variables> a = (LinkedList<Variables>)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.peek()).value;
+		RESULT = a;
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",2, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 7: // COMPARE ::= comp para cadena coma cadena parc pyc 
             {
               Comparar RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-4)).left;
@@ -223,6 +336,283 @@ class CUP$Sintactico_FCA$actions {
 		String b = (String)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-2)).value;
 		 RESULT = new Comparar(a.substring(1,a.length()-1),b.substring(1,b.length()-1)); //le quitamos las comillas a las cadenas 
               CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("COMPARE",3, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-6)), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 8: // GRAFICA_BARRAS ::= graf llavea CARACTERISTICAS llavec 
+            {
+              Grafica_Barras RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).right;
+		LinkedList<Caracteristica> a = (LinkedList<Caracteristica>)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).value;
+		RESULT = new Grafica_Barras(a); 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("GRAFICA_BARRAS",4, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 9: // CARACTERISTICAS ::= CARACTERISTICAS CARACTERISTICA 
+            {
+              LinkedList<Caracteristica> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).right;
+		LinkedList<Caracteristica> a = (LinkedList<Caracteristica>)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).right;
+		Caracteristica b = (Caracteristica)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.peek()).value;
+		 RESULT = a; 
+                                    RESULT.add(b); 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("CARACTERISTICAS",6, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 10: // CARACTERISTICAS ::= CARACTERISTICA 
+            {
+              LinkedList<Caracteristica> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).right;
+		Caracteristica a = (Caracteristica)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.peek()).value;
+		 RESULT = new LinkedList<>();
+                        RESULT.add(a);  
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("CARACTERISTICAS",6, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 11: // CARACTERISTICA ::= tit dosp VALOR pyc 
+            {
+              Caracteristica RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).right;
+		Valor a = (Valor)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).value;
+		 RESULT = new Caracteristica(0,a); 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("CARACTERISTICA",5, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 12: // CARACTERISTICA ::= ejex dosp cora VALORES corc pyc 
+            {
+              Caracteristica RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-2)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-2)).right;
+		LinkedList<Valor> a = (LinkedList<Valor>)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-2)).value;
+		 RESULT = new Caracteristica(1,a); 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("CARACTERISTICA",5, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 13: // CARACTERISTICA ::= val dosp cora VALORES corc pyc 
+            {
+              Caracteristica RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-2)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-2)).right;
+		LinkedList<Valor> a = (LinkedList<Valor>)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-2)).value;
+		 RESULT = new Caracteristica(2,a); 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("CARACTERISTICA",5, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 14: // CARACTERISTICA ::= titx dosp VALOR pyc 
+            {
+              Caracteristica RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).right;
+		Valor a = (Valor)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).value;
+		 RESULT = new Caracteristica(3,a); 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("CARACTERISTICA",5, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 15: // CARACTERISTICA ::= tity dosp VALOR pyc 
+            {
+              Caracteristica RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).right;
+		Valor a = (Valor)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).value;
+		 RESULT = new Caracteristica(4,a); 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("CARACTERISTICA",5, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 16: // VALOR ::= deci 
+            {
+              Valor RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.peek()).value;
+		 RESULT = new Valor(1, new Double(a)); 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("VALOR",8, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 17: // VALOR ::= digito 
+            {
+              Valor RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.peek()).value;
+		 RESULT = new Valor(2, new Integer(a)); 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("VALOR",8, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 18: // VALOR ::= id 
+            {
+              Valor RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.peek()).value;
+		 RESULT = new Valor(3, a); 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("VALOR",8, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 19: // VALOR ::= cadena 
+            {
+              Valor RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.peek()).value;
+		 RESULT = new Valor(4, a.substring(1,a.length()-1)); 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("VALOR",8, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 20: // VALOR ::= dola llavea pesp coma cadena coma cadena coma cadena llavec 
+            {
+              Valor RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-7)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-7)).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-7)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-5)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-5)).right;
+		String b = (String)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-5)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)).right;
+		String c = (String)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)).value;
+		int dleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).left;
+		int dright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).right;
+		String d = (String)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).value;
+		 RESULT = new Valor(5, b.substring(1,b.length()-1), c.substring(1,c.length()-1), d.substring(1,d.length()-1) ); 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("VALOR",8, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-9)), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 21: // VALORES ::= VALORES coma VALOR 
+            {
+              LinkedList<Valor> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-2)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-2)).right;
+		LinkedList<Valor> a = (LinkedList<Valor>)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-2)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).right;
+		Valor b = (Valor)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.peek()).value;
+		 RESULT = a; 
+                                    RESULT.add(b); 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("VALORES",7, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 22: // VALORES ::= VALOR 
+            {
+              LinkedList<Valor> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()).right;
+		Valor a = (Valor)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.peek()).value;
+		 RESULT = new LinkedList<>();
+                        RESULT.add(a); 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("VALORES",7, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 23: // DEF_GLOBALES ::= glob llavea LISTA_VARIABLES llavec 
+            {
+              LinkedList<Variables> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).right;
+		LinkedList<Variables> a = (LinkedList<Variables>)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).value;
+		 RESULT = a; 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("DEF_GLOBALES",9, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 24: // LISTA_VARIABLES ::= LISTA_VARIABLES dou id igual VALOR pyc 
+            {
+              LinkedList<Variables> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-5)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-5)).right;
+		LinkedList<Variables> a = (LinkedList<Variables>)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-5)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)).right;
+		String b = (String)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).right;
+		Valor c = (Valor)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).value;
+		 RESULT = a; RESULT.add(new Variables(2, b, c)); 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("LISTA_VARIABLES",10, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 25: // LISTA_VARIABLES ::= LISTA_VARIABLES str id igual VALOR pyc 
+            {
+              LinkedList<Variables> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-5)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-5)).right;
+		LinkedList<Variables> a = (LinkedList<Variables>)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-5)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)).right;
+		String b = (String)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).right;
+		Valor c = (Valor)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).value;
+		 RESULT = a; RESULT.add(new Variables(1, b, c)); 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("LISTA_VARIABLES",10, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 26: // LISTA_VARIABLES ::= dou id igual VALOR pyc 
+            {
+              LinkedList<Variables> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).right;
+		Valor b = (Valor)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).value;
+		 RESULT = new LinkedList<>();  RESULT.add(new Variables(2, a, b)); 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("LISTA_VARIABLES",10, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico_FCA$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 27: // LISTA_VARIABLES ::= str id igual VALOR pyc 
+            {
+              LinkedList<Variables> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-3)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).right;
+		Valor b = (Valor)((java_cup.runtime.Symbol) CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-1)).value;
+		 RESULT = new LinkedList<>();  RESULT.add(new Variables(1, a, b)); 
+              CUP$Sintactico_FCA$result = parser.getSymbolFactory().newSymbol("LISTA_VARIABLES",10, ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.elementAt(CUP$Sintactico_FCA$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico_FCA$stack.peek()), RESULT);
             }
           return CUP$Sintactico_FCA$result;
 

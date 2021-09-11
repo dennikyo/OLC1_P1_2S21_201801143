@@ -4,6 +4,11 @@ package analizadores;
 import java_cup.runtime.Symbol; 
 import ventana_compi.Comparar;
 import java.util.LinkedList;
+import Reportes.Grafica_Barras;
+import Reportes.Caracteristica;
+import Reportes.Variables;
+import Reportes.Valor;
+
 
 //------> Codigo para el parser,variables, metodos
 parser code{:
@@ -31,13 +36,20 @@ action code
 
 //------> declaracion de terminales 
 
-terminal String coma, llava, llavc, para, parc, pyc, gre, comp, cadena, dosp, igual, mas, menos, por, div, cora, corc;
+terminal String coma, llavea, llavec, para, parc, pyc, gre, comp, cadena, dosp, igual, digito,  mas, menos, por, div, cora, corc,pesp, dola, glob,esta,graf,tit,ejex,val,titx,tity, pie, arch,id,deci,dou,str;
 
 //------> declaracion de no terminales
 non terminal INICIO;
 non terminal LinkedList<Object> INSTRUCCIONES;
 non terminal Object INSTRUCCION;
 non terminal Comparar COMPARE;
+non terminal Grafica_Barras GRAFICA_BARRAS;
+non terminal Caracteristica CARACTERISTICA;
+non terminal LinkedList<Caracteristica> CARACTERISTICAS;
+non terminal LinkedList<Valor> VALORES;
+non terminal Valor VALOR;
+non terminal LinkedList<Variables> DEF_GLOBALES;
+non terminal LinkedList<Variables> LISTA_VARIABLES; 
 
 //------> precedencia de menor a mayor
 
@@ -46,15 +58,58 @@ start with INICIO;
 
 /*--------------- 3ra Area: Reglas Semanticas -----------------------*/
 
-INICIO::= gre llava INSTRUCCIONES:a llavc   {: instrucciones = a;  :} 
+INICIO::= gre llavea INSTRUCCIONES:a llavec   {: instrucciones = a;  :} 
        ;
 
 INSTRUCCIONES::= INSTRUCCIONES:a INSTRUCCION:b    {: RESULT = a; RESULT.add(b); :}
        | INSTRUCCION:a                            {: RESULT = new LinkedList<>(); RESULT.add(a);  :}
        ; 
 
-INSTRUCCION::= COMPARE:a        {: RESULT = a; :}                     
+INSTRUCCION::= COMPARE:a        {: RESULT = a; :}  
+            | GRAFICA_BARRAS:a {: RESULT = a; :}
+            | DEF_GLOBALES:a {:RESULT = a;:}
             ;
 
 COMPARE::= comp para cadena:a coma cadena:b parc pyc {: RESULT = new Comparar(a.substring(1,a.length()-1),b.substring(1,b.length()-1)); //le quitamos las comillas a las cadenas :}
         ;
+
+GRAFICA_BARRAS::= graf llavea CARACTERISTICAS:a llavec {:RESULT = new Grafica_Barras(a); :};
+
+CARACTERISTICAS::= CARACTERISTICAS:a CARACTERISTICA:b {: RESULT = a; 
+                                    RESULT.add(b); :}
+                | CARACTERISTICA:a  {: RESULT = new LinkedList<>();
+                        RESULT.add(a);  :};
+
+CARACTERISTICA::= tit dosp VALOR:a pyc {: RESULT = new Caracteristica(0,a); :}
+                | ejex dosp cora VALORES:a corc pyc {: RESULT = new Caracteristica(1,a); :}
+                | val dosp cora VALORES:a corc pyc {: RESULT = new Caracteristica(2,a); :}
+                | titx dosp VALOR:a pyc {: RESULT = new Caracteristica(3,a); :}
+                | tity dosp VALOR:a pyc {: RESULT = new Caracteristica(4,a); :};
+
+VALOR::= deci:a  {: RESULT = new Valor(1, new Double(a)); :}
+        | digito:a {: RESULT = new Valor(2, new Integer(a)); :}
+        | id:a {: RESULT = new Valor(3, a); :}
+        | cadena:a {: RESULT = new Valor(4, a.substring(1,a.length()-1)); :}
+        | dola llavea pesp:a coma cadena:b coma cadena:c coma cadena:d llavec {: RESULT = new Valor(5, b.substring(1,b.length()-1), c.substring(1,c.length()-1), d.substring(1,d.length()-1) ); :};
+
+
+VALORES::= VALORES:a coma VALOR:b {: RESULT = a; 
+                                    RESULT.add(b); :}
+        | VALOR:a {: RESULT = new LinkedList<>();
+                        RESULT.add(a); :};
+
+DEF_GLOBALES::= glob llavea LISTA_VARIABLES:a llavec {: RESULT = a; :} ;
+
+LISTA_VARIABLES::= LISTA_VARIABLES:a dou id:b igual VALOR:c pyc {: RESULT = a; RESULT.add(new Variables(2, b, c)); :}
+                | LISTA_VARIABLES:a str id:b igual VALOR:c pyc {: RESULT = a; RESULT.add(new Variables(1, b, c)); :}
+                | dou id:a igual VALOR:b pyc  {: RESULT = new LinkedList<>();  RESULT.add(new Variables(2, a, b)); :}
+                | str id:a igual VALOR:b pyc  {: RESULT = new LinkedList<>();  RESULT.add(new Variables(1, a, b)); :};
+
+
+
+
+
+
+
+
+
