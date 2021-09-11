@@ -12,14 +12,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/generadores/GLexico.java</file>
-            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/analizadores/Sintacticojs.java</file>
-            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/generadores/sope.java</file>
-            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/analizadores/Analizador_sintactico.cup</file>
+            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/analizadores/A_sintacticoFCA.cup</file>
             <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/analizadores/analizador_sintactico_js.cup</file>
-            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/ventana_compi/Nodo.java</file>
-            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/ventana_compi/Evaluar.java</file>
-            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/ventana_compi/Arbol.java</file>
+            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/generadores/GSintacticoFCA.java</file>
+            <file>file:/C:/Users/50235/Desktop/Compi1/Analizador_ejempplo1/Analizador/src/analizadores/Simbolos.java</file>
         </group>
     </open-files>
 </project-private>

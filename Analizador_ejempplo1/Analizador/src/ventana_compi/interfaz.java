@@ -5,6 +5,7 @@
  */
 package ventana_compi;
 
+import Reportes.Puntajes;
 import analizadores.Analizador_Lexico_FCA;
 import analizadores.Analizador_lexico;
 import analizadores.Analizador_lexico_js;

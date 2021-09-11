@@ -118,7 +118,7 @@ public class Editor {
                                 System.out.println("No se genero bien el arbol");
                             }else{
                                 
-                                nuevo_archivo1 = new Archivo(nombre_archivo1, new LinkedList<>(), new LinkedList<>(), new LinkedList<>(),new LinkedList<>());
+                                nuevo_archivo1 = new Archivo(nombre_archivo1, new LinkedList<>(), new LinkedList<>(), new LinkedList<>(),new LinkedList<>(),new LinkedList<>());
                                 //--> vamos a guardar las variables encontradas en el archivo
                                 analizar_entrada(raiz,nuevo_archivo1.variables ); 
                                 //-->agregamos los comentarios encontrados (la lista se lleno en el archivo A_Lexico_FCA.jflex)
@@ -159,7 +159,7 @@ public class Editor {
                                 System.out.println("No se genero bien el arbol");
                             }else{
                                 
-                                nuevo_archivo2 = new Archivo(nombre_archivo2, new LinkedList<>(), new LinkedList<>(),new LinkedList<>(), new LinkedList<>());
+                                nuevo_archivo2 = new Archivo(nombre_archivo2, new LinkedList<>(), new LinkedList<>(),new LinkedList<>(), new LinkedList<>(),new LinkedList<>());
                                 //--> vamos a guardar las variables encontradas en el archivo
                                 analizar_entrada(raiz, nuevo_archivo2.variables); 
                                 //-->agregamos los comentarios encontrados (la lista se lleno en el archivo A_Lexico_FCA.jflex)
